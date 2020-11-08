@@ -1,5 +1,5 @@
 html{overflow:scroll;overflow-x:auto}
-body{min-width:320px;margin:0px;padding:0px;box-sizing:border-box;font-family:'Roboto', 'Noto Sans KR', sans-serif;font-size:14px;line-height:16px;color:#1d2129;word-break:keep-all;overflow-wrap:break-word}
+body{min-width:1280px;margin:0px;padding:0px;box-sizing:border-box;font-family:'Roboto', 'Noto Sans KR', sans-serif;font-size:14px;line-height:16px;color:#1d2129;word-break:keep-all;overflow-wrap:break-word}
 section, article, aside, nav, header, footer{display:block}
 button{display:block;background:none;;margin:0;padding:0;border:none;cursor:pointer}
 img{border:none;vertical-align:top}

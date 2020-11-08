@@ -1,8 +1,8 @@
-#wrap { position: relative; width: 100%; height: 100%; }
+#wrap { position: relative; width: 100%; height: 100%; border: 1px solid rgba(0, 0, 0, 0); overflow: hidden; }
 
 header { position: relative; border-bottom: 1px solid #f0f2f5; -webkit-box-sizing: border-box; box-sizing: border-box; background: #fff; padding: 0 50px; z-index: 10; }
 
-.section_header { position: relative; max-width: 1280px; min-width: 1280px; margin: 0 auto; display: -webkit-box; display: -ms-flexbox; display: flex; width: 100%; height: 55px; padding-top: 8px; background: #fff; -webkit-box-sizing: border-box; box-sizing: border-box; }
+.section_header { position: relative; max-width: 1280px; margin: 0 auto; overflow: hidden; display: -webkit-box; display: -ms-flexbox; display: flex; width: 100%; height: 55px; padding-top: 8px; background: #fff; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 .section_header h1 { margin-right: 35px; }
 
@@ -96,7 +96,7 @@ header { position: relative; border-bottom: 1px solid #f0f2f5; -webkit-box-sizin
 
 .section_etcMenu { position: absolute; top: 55px; left: 0px; display: -webkit-box; display: -ms-flexbox; display: flex; width: 100%; background: #fff; border-top: 1px solid #f0f2f5; -webkit-box-sizing: border-box; box-sizing: border-box; padding-top: 48px; padding-bottom: 65px; z-index: 10; }
 
-.section_etcMenu article { position: relative; max-width: 1280px; min-width: 1280px; margin: 0 auto; width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; }
+.section_etcMenu article { position: relative; max-width: 1280px; margin: 0 auto; overflow: hidden; width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; }
 
 .section_etcMenu .article_etcMenu { width: 200px; padding: 0 15px; border-left: 1px solid #f0f2f5; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
@@ -112,7 +112,7 @@ header { position: relative; border-bottom: 1px solid #f0f2f5; -webkit-box-sizin
 
 .visualWrap { width: 100%; background: #9ad8d8; }
 
-.visualWrap .section_visual { position: relative; width: 78%; max-width: 998px; min-width: 998px; margin: 0 auto; padding-top: 95px; }
+.visualWrap .section_visual { position: relative; width: 78%; max-width: 998px; margin: 0 auto; padding-top: 95px; }
 
 .visualWrap .section_visual img { max-width: 100%; height: auto; }
 
@@ -146,7 +146,7 @@ header { position: relative; border-bottom: 1px solid #f0f2f5; -webkit-box-sizin
 
 .tab_eventCon { width: 100%; height: 150px; background: #fff; }
 
-.tab_eventCon ul { position: relative; max-width: 1000px; min-width: 1000px; margin: 0 auto; display: -webkit-box; display: -ms-flexbox; display: flex; height: 100%; }
+.tab_eventCon ul { position: relative; max-width: 1000px; margin: 0 auto; display: -webkit-box; display: -ms-flexbox; display: flex; height: 100%; }
 
 .tab_eventCon ul li { -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; padding-top: 42px; font-size: 21px; line-height: 25px; text-align: center; font-weight: 700; color: #60656a; cursor: pointer; }
 
@@ -184,7 +184,7 @@ section[class^=section_event] .article_info .infoBox p { position: relative; bot
 
 .section_event1 .article_info { width: 100%; padding-top: 140px; background: #ffd17f; }
 
-.section_event1 .article_info .infoBox { height: 440px; position: relative; max-width: 1000px; min-width: 1000px; margin: 0 auto; padding-top: 108px; -webkit-box-sizing: border-box; box-sizing: border-box; text-align: center; background: #fff; }
+.section_event1 .article_info .infoBox { height: 440px; position: relative; max-width: 1000px; margin: 0 auto; padding-top: 108px; -webkit-box-sizing: border-box; box-sizing: border-box; text-align: center; background: #fff; }
 
 .section_event1 .article_info .infoBox h2 { position: absolute; top: -65px; left: 50%; -webkit-transform: translate(-50%); transform: translate(-50%); }
 
@@ -234,7 +234,7 @@ section[class^=section_event] .article_info .infoBox p { position: relative; bot
 
 .section_event2 .article_info { width: 100%; padding-top: 140px; background: #ceccf1; }
 
-.section_event2 .article_info .infoBox { height: 440px; position: relative; max-width: 1000px; min-width: 1000px; margin: 0 auto; padding-top: 108px; -webkit-box-sizing: border-box; box-sizing: border-box; text-align: center; background: #fff; }
+.section_event2 .article_info .infoBox { height: 440px; position: relative; max-width: 1000px; margin: 0 auto; padding-top: 108px; -webkit-box-sizing: border-box; box-sizing: border-box; text-align: center; background: #fff; }
 
 .section_event2 .article_info .infoBox h2 { position: absolute; top: -65px; left: 50%; -webkit-transform: translate(-50%); transform: translate(-50%); }
 
@@ -248,7 +248,7 @@ section[class^=section_event] .article_info .infoBox p { position: relative; bot
 
 .section_event2 .article_benefit h4 { margin-bottom: 20px; }
 
-.section_event2 .article_benefit .lst_benefit { position: relative; max-width: 1000px; min-width: 1000px; margin: 0 auto; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-pack: distribute; justify-content: space-around; margin-top: 45px; }
+.section_event2 .article_benefit .lst_benefit { position: relative; max-width: 1000px; margin: 0 auto; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-pack: distribute; justify-content: space-around; margin-top: 45px; }
 
 .section_event2 .article_benefit .lst_benefit > div { width: 240px; height: auto; padding-top: 130px; background-position: 100% 0; background-repeat: no-repeat; background-size: 100% auto; }
 
@@ -270,7 +270,7 @@ section[class^=section_event] .article_info .infoBox p { position: relative; bot
 
 .tit_exhibition { margin-top: 120px; font-size: 36px; line-height: 40px; text-align: center; }
 
-section[class^=section_exhibition] .contents_exhibition { position: relative; max-width: 1000px; min-width: 1000px; margin: 0 auto; margin-top: 85px; }
+section[class^=section_exhibition] .contents_exhibition { position: relative; max-width: 1000px; margin: 0 auto; margin-top: 85px; }
 
 section[class^=section_exhibition] .contents_exhibition .article_exhibition { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: reverse; -ms-flex-direction: row-reverse; flex-direction: row-reverse; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
 
@@ -342,7 +342,7 @@ section[class^=section_exhibition] .contents_exhibition .lst_exhibition .btn_mor
 
 .section_introduce { padding: 100px 0; background: #f0f2f5; }
 
-.section_introduce .article_introduce { position: relative; max-width: 1000px; min-width: 1000px; margin: 0 auto; }
+.section_introduce .article_introduce { position: relative; max-width: 1000px; margin: 0 auto; }
 
 .section_introduce .article_introduce h2 { font-size: 36px; line-height: 40px; text-align: center; margin-bottom: 20px; }
 
@@ -380,7 +380,7 @@ section[class^=section_exhibition] .contents_exhibition .lst_exhibition .btn_mor
 
 .section_trust nav div:nth-child(3) dl { background: url("../../images/bg/bg_trust3.png") 84% 50% no-repeat; background-size: auto 100%; }
 
-.section_trust nav dl { position: relative; max-width: 1000px; min-width: 1000px; margin: 0 auto; padding: 30px 0 25px; color: #0c4c56; cursor: pointer; }
+.section_trust nav dl { position: relative; max-width: 1000px; margin: 0 auto; padding: 30px 0 25px; color: #0c4c56; cursor: pointer; }
 
 .section_trust nav dl.on:after { opacity: 0.7; }
 
@@ -416,7 +416,7 @@ section[class^=section_exhibition] .contents_exhibition .lst_exhibition .btn_mor
 
 .section_notice { padding: 80px 0; background: #f0f2f5; }
 
-.section_notice article { position: relative; max-width: 1000px; min-width: 1000px; margin: 0 auto; font-size: 15px; line-height: 19px; color: #60656a; }
+.section_notice article { position: relative; max-width: 1000px; margin: 0 auto; font-size: 15px; line-height: 19px; color: #60656a; }
 
 .section_notice article h2 { font-size: 36px; line-height: 40px; text-align: center; }
 
@@ -434,7 +434,7 @@ section[class^=section_exhibition] .contents_exhibition .lst_exhibition .btn_mor
 
 footer { height: 135px; border-top: 1px solid #f0f2f5; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 32px 50px 0; box-sizing: border-box; }
 
-footer .section_footer { display: -webkit-box; display: -ms-flexbox; display: flex; position: relative; max-width: 1280px; min-width: 1280px; margin: 0 auto; }
+footer .section_footer { display: -webkit-box; display: -ms-flexbox; display: flex; position: relative; max-width: 1280px; margin: 0 auto; overflow: hidden; }
 
 footer .section_footer .article_csCenter { width: 40%; margin-right: 100px; }
 
