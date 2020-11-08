@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta property="og:type" content="website" />
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <!-- <script type="text/javascript" src="../lib/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../lib/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="../lib/js/prefixfree.min.js"></script> -->
+    <script type="text/javascript" src="lib/js/slick.min.js"></script>
+    <script type="text/javascript" src="lib/js/motion.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./lib/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="./lib/css/common.css">
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <title>[와디즈] 펀딩으로 시작하자</title>
+</head>
+<body>
+<!-- wrap -->
+<section id="wrap">
+    <!-- header -->
+    <header>
+        <!-- 전체 메뉴 -->
+        <section class="section_header clear">
+            <!-- logo -->
+            <h1>
+                <span class="screen_out">Wadiz</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="85" height="25" viewBox="0 0 85 25">
+                    <path fill="#1D2129" fill-rule="nonzero"
+                        d="M58.49 2.23h2.11v21.29H59a1.73 1.73 0 0 1-1.62-1.16 9 9 0 0 1-10.93-.28 7.48 7.48 0 0 1-2.75-6.29 7.65 7.65 0 0 1 12.79-5.07V4.23a2 2 0 0 1 2-2zm-6.3 18.62a4.36 4.36 0 0 0 4.16-4.52 4.19 4.19 0 1 0-8.35 0 4.36 4.36 0 0 0 4.19 4.52zM42 23.52h-1.52a1.73 1.73 0 0 1-1.64-1.16 9 9 0 0 1-10.93-.28 7.48 7.48 0 0 1-2.75-6.29A7.65 7.65 0 0 1 38 10.72a2 2 0 0 1 1.9-1.79H42v14.59zm-8.41-2.67h.02a4.35 4.35 0 0 0 4.15-4.52 4.35 4.35 0 0 0-4.17-4.51 4.35 4.35 0 0 0-4.17 4.51 4.36 4.36 0 0 0 4.17 4.52zM83.47 8.94v2.11l-7.07 9.06h7.06v3.47h-13v-2.1l7.08-9.07h-6.62v-1.47a2 2 0 0 1 2-2h10.55zM65.86 7.3a2.48 2.48 0 1 1 0-4.96 2.48 2.48 0 0 1 0 4.96zM21.21 8.94h4.14l-4.86 14.59h-4.15l-3.21-9.36-3.21 9.36H5.77L.92 8.94h4.13L8 18l2.5-7.74a2 2 0 0 1 1.86-1.34h2.9l3 9.08 2.95-9.06zm42.65 14.59l-.04-12.59a2 2 0 0 1 2-2h2.11v14.59h-4.07z">
+                        <animate dur="5s" values="#000000; #0a5b68; #000000" keyTimes="0; 0.2; 1"
+                            attributeName="fill" repeatCount="indefinite" />
+                    </path>
+                </svg>
+            </h1>
+            <!--// logo -->
+            <!-- gnb -->
+            <nav class="section_gnb">
+                <h2 class="screen_out">주요 메뉴</h2>
+                <ul class="gnb">
+                    <li><a href="#">펀딩하기</a></li>
+                    <li><a href="#">투자하기</a></li>
+                    <li><a href="#">스타트업 찾기</a></li>
+                </ul>
+                <p class="btn_etcMenu" onclick="etcMenuOpen();">더보기</p>
+            </nav>
+            <!--// gnb -->
+            <!-- 검색 및 회원 메뉴 -->
+            <section class="section_rightTop">
+                <!-- 전체 검색 -->
+                <article class="article_totalSearch">
+                    <h2 class="screen_out">프로젝트 검색</h2>
+                    <form action="" class="inner_totalSearch">
+                        <label for="find">검색</label>
+                        <input type="search" name="find" placeholder="어떤 프로젝트를 찾고 계신가요?"
+                            onclick="popOpen('article_keyword');" autocomplete="off" autocomplete="false" />
+                    </form>
+                    <aside class="article_keyword">
+                        <h2 class="screen_out">최근 검색어 및 인기 검색어</h2>
+                        <ul class="tab_keyworld">
+                            <li onclick="kwTab(this, 'new')" class="on"><span>최근</span></li>
+                            <li onclick="kwTab(this, 'hot')"><span>인기</span></li>
+                        </ul>
+                        <nav class="inner_newKeyword">
+                            <h3 class="screen_out">최근 검색어</h3>
+                            <!-- 검색어 없음 -->
+                            <p class="empty">최근 검색 기록이 없습니다.<br />와디즈의 프로젝트를 검색해보세요.</p>
+                            <!--// 검색어 없음 -->
+                            <!-- 검색어 있음 -->
+                            <ol>
+                                <li>
+                                    <a href="#">내가 좋아하는 것들</a>
+                                    <button onclick="keywordDel(this);">검색어 삭제</button>
+                                </li>
+                                <li>
+                                    <a href="#">떡볶이</a>
+                                    <button onclick="keywordDel(this);">검색어 삭제</button>
+                                </li>
+                                <li>
+                                    <a href="#">여행</a>
+                                    <button onclick="keywordDel(this);">검색어 삭제</button>
+                                </li>
+                                <li>
+                                    <a href="#">피스타치오아몬드 뉴욕치즈케이크 사랑에빠진딸기주세요</a>
+                                    <button onclick="keywordDel(this);">검색어 삭제</button>
+                                </li>
+                            </ol>
+                            <!-- 검색어 있음 -->
+                            <!-- 검색어 삭제 및 창 닫기-->
+                            <div class="keywordBtmBtn clear">
+                                <h4 class="screen_out">검색어 삭제 및 창 닫기 버튼</h4>
+                                <button class="btn_keywordAllClear" onclick="keywordAllClear();">전체삭제</button>
+                                <button class="btn_keywordClose" onclick="popClose('article_keyword')">닫기</button>
+                            </div>
+                            <!--// 검색어 삭제 및 창 닫기 -->
+                        </nav>
+                        <nav class="inner_hotKeyword" style="display:none">
+                            <h3 class="screen_out">인기 검색어</h3>
+                            <ol>
+                                <li><em>1</em><a href="#">캠핑</a></li>
+                                <li><em>2</em><a href="#">안경</a></li>
+                                <li><em>3</em><a href="#">코트</a></li>
+                                <li><em>4</em><a href="#">브리프케이스</a></li>
+                                <li><em>5</em><a href="#">치약</a></li>
+                                <li><em>6</em><a href="#">usb</a></li>
+                                <li><em>7</em><a href="#">캐시미어</a></li>
+                                <li><em>8</em><a href="#">가습기</a></li>
+                                <li><em>9</em><a href="#">가방</a></li>
+                                <li><em>10</em><a href="#">의자</a></li>
+                            </ol>
+                            <!-- 검색어 삭제 및 창 닫기-->
+                            <div class="keywordBtmBtn clear">
+                                <h4 class="screen_out">창 닫기 버튼</h4>
+                                <button class="btn_keywordClose" onclick="popClose('article_keyword')">닫기</button>
+                            </div>
+                            <!--// 검색어 삭제 및 창 닫기 -->
+                        </nav>
+                    </aside>
+                </article>
+                <!-- 전체 검색 -->
+                <!-- 회원 메뉴 -->
+                <nav class="article_memberNav">
+                    <h2 class="screen_out">회원 메뉴</h2>
+                    <ul class="clear">
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li class="btn_pjtRequest" onmouseenter="on(this)" onmouseleave="off(this)" onclick="popToggle('ariticle_pjtOpen')">프로젝트 오픈 신청</li>
+                    </ul>
+                </nav>
+                <!--// 회원 메뉴 -->
+                <!-- 프로젝트 오픈 메뉴 -->
+                <nav class="ariticle_pjtOpen">
+                    <h2 class="screen_out">프로젝트 오픈하기</h2>
+                    <div onmouseenter="on(this)" onmouseleave="off(this)" onclick="location.href='#'">
+                        <dl>
+                            <dt>펀딩 오픈 신청하기</dt>
+                            <dd>서포터에게 '제품이나 서비스'를 선물합니다.</dd>
+                        </dl>
+                    </div>
+                    <div onmouseenter="on(this)" onmouseleave="off(this)" onclick="location.href='#'">
+                        <dl>
+                            <dt>투자 오픈 신청하기</dt>
+                            <dd>투자자에게 기업의 주식이나 채권을 발행합니다.</dd>
+                        </dl>
+                    </div>
+                    <div onmouseenter="on(this)" onmouseleave="off(this)" onclick="location.href='#'">
+                        <dl>
+                            <dt>와디즈펀딩 알아보기</dt>
+                        </dl>
+                    </div>
+                </nav>
+                <!--// 프로젝트 오픈 메뉴 -->
+            </section>
+            <!--// 검색 및 회원 메뉴 -->
+        </section>
+        <!--// 전체 메뉴 -->
+        <!-- 더보기 메뉴 -->
+        <nav class="section_etcMenu">
+            <h2 class="screen_out">더보기 메뉴</h2>
+            <article>
+                <div class="article_etcMenu">
+                    <h3>바로가기</h3>
+                    <ul>
+                        <li><a href="#">프로젝트 오픈 신청</a></li>
+                        <li><a href="#">펀딩메이트</a></li>
+                        <li><a href="#">메이커 뉴스레터</a></li>
+                        <li><a href="#">와디즈 스쿨</a></li>
+                        <li><a href="#">캐스트</a></li>
+                        <li><a href="#">이용 가이드</a></li>
+                    </ul>
+                </div>
+                <div class="article_etcMenu">
+                    <h3>와디즈 소개</h3>
+                    <ul>
+                        <li><a href="#">와디즈 소개</a></li>
+                        <li><a href="#">공간 와디즈</a><span class="bedge_new">new</span></li>
+                        <li><a href="#">와디즈 파트너</a></li>
+                        <li><a href="#">와디즈 메이커 어워드</a></li>
+                        <li><a href="#">성공 프로젝트</a></li>
+                    </ul>
+                </div>
+                <div class="article_etcMenu">
+                    <h3>공지</h3>
+                    <ul>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">이벤트</a></li>
+                        <li><a href="#">보도자료</a></li>
+                        <li><a href="#">채용</a></li>
+                    </ul>
+                </div>
+            </article>
+        </nav>
+        <!--// 더보기 메뉴 -->
+    </header>
+    <!--// header -->
+    <!-- visual -->
+    <section class="visualWrap">
+        <article class="section_visual">
+            <h2 class="title"><img src="images/visual/txt_visualMain.png" alt="펀딩으로 시작하자" /></h2>
+            <p class="subTxt"><img src="images/visual/txt_visualSub.png" alt="내 방식대로 내 세상을 바꾸는 특별한 이야기" /></p>
+            <p class="period"><img src="images/visual/txt_evtPeriod.png" alt="이벤트 기간: 2020.10.26~11.30" /></p>
+            <div class="model"><img src="images/visual/img_visual.png" alt="모델 이미지" /></div>
+        </article>
+    </section>
+    <!--// visual-->
+    <!-- container -->
+    <section class="containerWrap">
+        <!-- video -->
+        <section class="section_video">
+            <h2 class="screen_out">와디즈 홍보영상 유튜브 보기</h2>
+            <article>
+                <ul class="tab_youtube">
+                    <li class="on" onclick="youtubeTab(0,this)">히어로 비긴즈</li>
+                    <li onclick="youtubeTab(1,this)">기쁜 우리 시작하는 날</li>
+                    <li onclick="youtubeTab(2,this)">카페 푸른 시작</li>
+                    <li onclick="youtubeTab(3,this)">야망의 시작</li>
+                </ul>
+                <div class="iframeBox">
+                    <iframe src="https://www.youtube.com/embed/8ZZTBrYEBx8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="btn_youtubeLink" onmouseenter="on(this)" onmouseleave="off(this)"><a href="https://www.youtube.com/channel/UCRF2YAxV9vnzo2khhGCGlZg/featured" target="_blank">와디즈 유튜브 보러가기</a></p>
+            </article>
+        </section>
+        <!--// video -->
+        <!-- event direct tab -->
+        <nav class="tab_eventCon">
+            <ul>
+                <li class="on" onclick="scrollMove(1)">
+                    <em>Event1</em>
+                    100명에게 새 시작 10만 포인트
+                </li>
+                <li onclick="scrollMove(2)">
+                    <em>Event2</em>
+                    모두에게 기획전 쿠폰팩
+                </li>
+            </ul>
+        </nav>
+        <!--// event direct tab -->
+        <!-- event1 -->
+        <section class="section_event1">
+            <article class="article_info">
+                <div class="infoBox">
+                    <h2><img src="images/txt_event1.png" alt="Event1" /></h2>
+                    <h3>혼자하는 시작보다 함께하는 시작!<em class="fw_bold">새로운 시작을 함께 해</em></h3>
+                    <p class="txt_evt">서포터님이 지금 새롭게 시작하고 싶은 것은 무엇인가요?<br>어떤 시작이든 좋아요.<br>서포터님께서 지금 시작하고 싶은 것을 공유해주세요.<br>내 방식대로 내 세상을 바꾸려는 서포터님의 시작을 응원합니다.</p>
+                    <span class="img"><img src="images/cover/cover_event1.png" alt="" /></span>
+                </div>
+            </article>
+            <article class="article_benefit">
+                <h4 class="tit_evt fw_bold">혜택</h4>
+                <p class="img_coupon"><img src="images/coupon_100000p.png" alt="10만 포인트" /></p>
+                <p class="txt_evt">서포터님의 시작을 응원하는 마음으로<br>새 시작 <em class="fw_bold">100,000원 펀딩 포인트</em>를 드립니다.</p>
+            </article>
+            <article class="article_howto">
+                <h4 class="tit_evt fw_bold">참여 방법</h4>
+                <h5 class="fw_bold">Step 01</h5>
+                <p class="txt_evt">아래 <em class="fw_bold">#펀딩으로시작하자</em>이미지 중<br>마음에 드는 이미지를 선택하여 캡쳐해주세요.</p>
+                <ul class="lst_adPoster">
+                    <li><img src="images/banner/bnr_ad1.jpg" alt="광고 포스터1" /></li>
+                    <li><img src="images/banner/bnr_ad2.jpg" alt="광고 포스터2" /></li>
+                    <li><img src="images/banner/bnr_ad3.jpg" alt="광고 포스터3" /></li>
+                    <li><img src="images/banner/bnr_ad4.jpg" alt="광고 포스터4" /></li>
+                    <li><img src="images/banner/bnr_ad5.jpg" alt="광고 포스터5" /></li>
+                    <li><img src="images/banner/bnr_ad6.jpg" alt="광고 포스터6" /></li>
+                </ul>
+                <h5 class="fw_bold">Step 02</h5>
+                <p class="txt_evt">캡쳐한 이미지와 함께<br>나의 새로운 시작을 인스타그램에 공유해주세요.<br>내 세상을 바꿀 시작을 함께하고 싶은 친구들을<br>포스팅에 태그 해주셔도 좋아요.<br>함께할수록 시작의 힘은 커지고<br>이벤트 당첨 확률도 높아집니다!</p>
+                <h6 class="tit_hashtag">#필수 해시태그</h6>
+                <ul class="lst_hashtag">
+                    <li>#내방식대로내세상을바꾸자</li>
+                    <li>#와디즈</li>
+                </ul>
+                <p class="img_instagram"><img src="images/img_instagram.png" alt="인스타그램 업로드 예시 이미지" />&lt;예시 이미지&gt;</p>
+                <p class="txt_evt"><em class="fw_bold">* 필수 해시태그</em>와 함께<br /><em class="fw_bold">전체 공개</em>로 게시해주셔야 합니다.</p>
+                <p class="btn_instagram" onmouseenter="on(this)" onmouseleave="off(this)"><a href="#">와디즈 인스타그램에서 더 보기</a></p>
+            </article>
+        </section>
+        <!--// event1 -->
+        <!-- event2 -->
+        <section class="section_event2">
+            <article class="article_info">
+                <div class="infoBox">
+                    <h2><img src="images/txt_event2.png" alt="Event2" /></h2>
+                    <h3>내 방식대로 내 세상을 바꾸는 펀딩 기획전<em class="fw_bold">펀딩으로 시작하자</em></h3>
+                    <p>서포터님의 새로운 시작이<br>설렘으로 가득하길 바라는 마음으로<br>시작에 어울리는 펀딩을 소개합니다.</p>
+                    <span class="img"><img src="images/cover/cover_event2.png" alt="" /></span>
+                </div>
+            </article>
+            <article class="article_benefit">
+                <h4 class="tit_evt fw_bold">기획전 혜택 한눈에 보기</h4>
+                <p class="txt_evt2">펀딩하기 전, 쿠폰 먼저 받으세요!</p>
+                <article class="lst_benefit">
+                    <div>
+                        <h5 class="fw_bold">혜택 1</h5>
+                        <p>신규 회원 한정!<br />가입 시 이벤트 참여란에<br /><em class="fw_bold">[펀딩하자]</em>입력하면<span class="screen_out">2,000포인트</span></p>
+                    </div>
+                    <div>
+                        <h5 class="fw_bold">혜택 2</h5>
+                        <p>&lt;모두가 따라오게 될 거야&gt;<br>기획전 전용<br><em class="fw_bold">6,000원 쿠폰팩</em></p>
+                    </div>
+                    <div>
+                        <h5 class="fw_bold">혜택 3</h5>
+                        <p>와디즈 앱 전용<br /><em class="fw_bold">2,000원 쿠폰</em></p>
+                    </div>
+                </article>
+                <p class="btn_coupon" onmouseenter="on(this)" onmouseleave="off(this)"><a href="#">쿠폰 받으러 가기</a></p>
+                <p class="txt_evt">쿠폰은 회원가입 후 &gt; MY 페이지 &gt; 쿠폰존에서<br />다운로드 받을 수 있습니다.</p>
+            </article>
+        </section>
+        <!--// event2 -->
+        <h2 class="tit_exhibition fw_bold">&lt;펀딩으로 시작하자&gt; 기획전</h2>
+        <!-- exhibition1 -->
+        <section class="section_exhibition1">
+            <section class="contents_exhibition">
+                <article class="article_exhibition">
+                    <div class="txt">
+                        <h3>기획전01</h3>
+                        <h4 class="fw_bold">남다른 아이디어로 새롭게 시작하기!</h4>
+                        <p>새로운 시작을 더 반짝 빛나게 해줄 펀딩 어때요?<br>언제나 새로운 것에 관심이 많은 서포터님을 위해 준비했어요.</p>
+                        <div class="hashtag">
+                            <h5 class="tit_hashtag">#주요 키워드</h5>
+                            <ul class="lst_hashtag clear">
+                                <li>테크</li>
+                                <li>모빌리티</li>
+                                <li>게임</li>
+                                <li>아이디어</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                        <a href="#" title="테크, 모빌리티, 게임, 아이디어 관련 펀딩 바로가기">테크, 모빌리티, 게임, 아이디어 관련 펀딩 바로가기</a>
+                    </p>
+                </article>
+                <nav class="lst_exhibition">
+                    <h5 class="screen_out">인기 프로젝트 미리보기</h5>
+                    <div class="lstCon">
+                        <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                            <a href="#"><img src="images/thumbnail/prod1-1.jpg" alt="고속 허브" /></a>
+                        </p>
+                        <h6 class="fw_bold">[1755명 펀딩] 1만원대 고속허브! C타입+A타입+젠더~3개를 하나로</h6>
+                        <ul class="clear">
+                            <li class="percent"><em class="screen_out">달성률</em>1582%</li>
+                            <li class="keyword"><em class="screen_out">키워드</em>테크&middot;가전</li>
+                        </ul>
+                    </div>
+                    <div class="lstCon">
+                        <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                            <a href="#"><img src="images/thumbnail/prod1-2.jpg" alt="휴대용 모니터" /></a>
+                        </p>
+                        <h6 class="fw_bold">사이즈에 디기(DIGI) 압도적인 휴대용 모니터가 여기있다? 여기있다 여기있다 여기있다 여기있다 </h6>
+                        <ul class="clear">
+                            <li class="percent"><em class="screen_out">달성률</em>152%</li>
+                            <li class="keyword"><em class="screen_out">키워드</em>테크&middot;가전</li>
+                        </ul>
+                    </div>
+                    <div class="lstCon">
+                        <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                            <a href="#"><img src="images/thumbnail/prod1-3.jpg" alt="블랙박스" /></a>
+                        </p>
+                        <h6 class="fw_bold">번호판이 또렷하게! 번호판 집중촬영모드 블랙박스로 주차 뺑소니 걱정 끝!</h6>
+                        <ul class="clear">
+                            <li class="percent"><em class="screen_out">달성률</em>733%</li>
+                            <li class="keyword"><em class="screen_out">키워드</em>테크&middot;가전</li>
+                        </ul>
+                    </div>
+                    <p class="btn_more" onmouseenter="on(this)" onmouseleave="off(this)"><a href="#">더 많은 펀딩<br />보러가기</a></p>
+                </nav>
+            </section>
+        </section>
+        <!--// exhibition1 -->
+        <!-- exhibition2 -->
+        <section class="section_exhibition2">
+            <section class="contents_exhibition">
+                <article class="article_exhibition">
+                    <div class="txt">
+                        <h3>기획전02</h3>
+                        <h4 class="fw_bold">자신감 충전하고 당당하게 시작하기!</h4>
+                        <p>소소한 일상에서 새로움을 찾는 것만큼 기쁜일이 없죠.<br>새로운 시작 지금 여기 오늘부터 출발해볼까요.</p>
+                        <div class="hashtag">
+                            <h5 class="tit_hashtag">#주요 키워드</h5>
+                            <ul class="lst_hashtag">
+                                <li>패션</li>
+                                <li>뷰티</li>
+                                <li>여행</li>
+                                <li>캠핑</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                        <a href="#" title="패션, 뷰티, 여행, 캠핑 관련 펀딩 바로가기">패션, 뷰티, 여행, 캠핑 관련 펀딩 바로가기</a>
+                    </p>
+                </article>
+                <nav class="lst_exhibition">
+                    <h5 class="screen_out">인기 프로젝트 미리보기</h5>
+                    <div class="lstCon">
+                        <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                            <a href="#"><img src="images/thumbnail/prod2-1.jpg" alt="러닝화" /></a>
+                        </p>
+                        <h6 class="fw_bold">미친쿠셔닝의 러닝화 수피어 GOORV-001</h6>
+                        <ul class="clear">
+                            <li class="percent"><em class="screen_out">달성률</em>102%</li>
+                            <li class="keyword"><em class="screen_out">키워드</em>스포츠&middot;모빌리티</li>
+                        </ul>
+                    </div>
+                    <div class="lstCon">
+                        <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                            <a href="#"><img src="images/thumbnail/prod2-2.jpg" alt="주얼리" /></a>
+                        </p>
+                        <h6 class="fw_bold">[2261%앵콜]오묘한 반짝임에 끌리다[4만원대 천연러프다이아 주얼리]</h6>
+                        <ul class="clear">
+                            <li class="percent"><em class="screen_out">달성률</em>541%</li>
+                            <li class="keyword"><em class="screen_out">키워드</em>패션&middot;잡화</li>
+                        </ul>
+                    </div>
+                    <div class="lstCon">
+                        <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                            <a href="#"><img src="images/thumbnail/prod2-3.jpg" alt="오늘팬츠" /></a>
+                        </p>
+                        <h6 class="fw_bold">[리코브] 날마다 오늘! 오늘도 입고 싶은 "오 . 늘 . 팬 . 츠"</h6>
+                        <ul class="clear">
+                            <li class="percent"><em class="screen_out">달성률</em>3547%</li>
+                            <li class="keyword"><em class="screen_out">키워드</em>패션&middot;잡화</li>
+                        </ul>
+                    </div>
+                    <p class="btn_more" onmouseenter="on(this)" onmouseleave="off(this)"><a href="#">더 많은 펀딩<br />보러가기</a></p>
+                </nav>
+            </section>
+        </section>
+        <!--// exhibition2 -->
+        <!-- exhibition3 -->
+        <section class="section_exhibition3">
+            <section class="contents_exhibition">
+                <article class="article_exhibition">
+                    <div class="txt">
+                        <h3>기획전03</h3>
+                        <h4 class="fw_bold">건강한 몸과 마음으로 시작하기!</h4>
+                        <p>건강한 몸에 건강한 생각이 깃들죠.<br>새로운 시작을 위해 나를 먼저 살펴봐요, 우리의 여정은 특별하니까요.</p>
+                        <div class="hashtag">
+                            <h5 class="tit_hashtag">#주요 키워드</h5>
+                            <ul class="lst_hashtag">
+                                <li>푸드</li>
+                                <li>홈피트니스</li>
+                                <li>인테리어</li>
+                                <li>문화생활</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                        <a href="#" title="푸드, 홈피트니스, 인테리어, 문화생활 관련 펀딩 바로가기">푸드, 홈피트니스, 인테리어, 문화생활 관련 펀딩 바로가기</a>
+                    </p>
+                </article>
+                <nav class="lst_exhibition">
+                    <h5 class="screen_out">인기 프로젝트 미리보기</h5>
+                    <div class="lstCon">
+                        <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                            <a href="#"><img src="images/thumbnail/prod3-1.jpg" alt="장어구이" /></a>
+                        </p>
+                        <h6 class="fw_bold">역대급 사이즈, 장어명인의 맛을 그대로 담은 3분 [구찌구구 민물장어]</h6>
+                        <ul class="clear">
+                            <li class="percent"><em class="screen_out">달성률</em>445%</li>
+                            <li class="keyword"><em class="screen_out">키워드</em>푸드</li>
+                        </ul>
+                    </div>
+                    <div class="lstCon">
+                        <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                            <a href="#"><img src="images/thumbnail/prod3-2.jpg" alt="두부밥" /></a>
+                        </p>
+                        <h6 class="fw_bold">[북한국민음식] 건강한 곤드레 두부밥과 이북식 만능 양념장</h6>
+                        <ul class="clear">
+                            <li class="percent"><em class="screen_out">달성률</em>108%</li>
+                            <li class="keyword"><em class="screen_out">키워드</em>푸드</li>
+                        </ul>
+                    </div>
+                    <div class="lstCon">
+                        <p class="img" onmouseenter="on(this)" onmouseleave="off(this)">
+                            <a href="#"><img src="images/thumbnail/prod3-3.jpg" alt="후드티" /></a>
+                        </p>
+                        <h6 class="fw_bold">숨겨진 영웅, 소방관 후원 후드티 프로젝트ㅣGREAT KOREAN</h6>
+                        <ul class="clear">
+                            <li class="percent"><em class="screen_out">달성률</em>509%</li>
+                            <li class="keyword"><em class="screen_out">키워드</em>패션&middot;잡화</li>
+                        </ul>
+                    </div>
+                    <p class="btn_more" onmouseenter="on(this)" onmouseleave="off(this)"><a href="#">더 많은 펀딩<br />보러가기</a></p>
+                </nav>
+            </section>
+        </section>
+        <!--// exhibition3 -->
+        <!-- introduce -->
+        <section class="section_introduce">
+            <article class="article_introduce">
+                <h2 class="fw_bold">펀딩을 소개합니다.</h2>
+                <p>펀딩, 일반적인 쇼핑과는 다릅니다.</p>
+                <article>
+                    <div>
+                        <h3 class="fw_bold">제품 너머<br />만든 사람의 이야기</h3>
+                        <p>펀딩에는 만든 사람의 이야기가 담겨있습니다. 나와 비슷한 생각, 관심, 취향을 가진 사람들을 만나고 새로운 라이프스타일을 발견할 수 있습니다.</p>
+                    </div>
+                    <div>
+                        <h3 class="fw_bold">만들어진 제품이 아닌<br />만드는 중인 제품</h3>
+                        <p>메이커는 펀딩을 통해 시장 반응을 살피고 자금을 모아 제품을 만듭니다. 때문에 배송이 조금 느리지만 새로운 제품을 빠르게 만날 수 있습니다.</p>
+                    </div>
+                    <div>
+                        <h3 class="fw_bold">프로젝트가 성공해야<br />이루어지는 결제</h3>
+                        <p>펀딩에는 진행 기간과 목표 금액이 있습니다. 기간 내 목표 금액을 달성해야만 펀딩 종료일에 결제가 이뤄집니다.<br />따라서 펀딩 참여일과 결제일이 다를 수 있습니다.</p>
+                    </div>
+                </article>
+            </article>
+        </section>
+        <!--// introduce -->
+        <!-- trust -->
+        <section class="section_trust">
+            <h2 class="fw_bold">믿고 펀딩하는 와디즈</h2>
+            <nav>
+                <div>
+                    <dl onmouseenter="on(this)" onmouseleave="off(this)">
+                        <dd>와디즈가 마련한 정책과 가이드를 소개합니다.</dd>
+                        <dt class="fw_bold">와디즈 신뢰센터</dt>
+                    </dl>
+                </div>
+                <div>
+                    <dl onmouseenter="on(this)" onmouseleave="off(this)">
+                        <dd>펀딩 제품에 문제가 생기면 책입집니다.</dd>
+                        <dt class="fw_bold">펀딩금 반환 정책</dt>
+                    </dl>
+                </div>
+                <div>
+                    <dl onmouseenter="on(this)" onmouseleave="off(this)">
+                        <dd>메이커의 프로젝트, 이렇게 심사합니다.</dd>
+                        <dt class="fw_bold">펀딩 심사 정책</dt>
+                    </dl>
+                </div>
+            </nav>
+        </section>
+        <!--// trust -->
+        <!-- sns sharing -->
+        <section class="section_sns">
+            <h2 class="screen_out">SNS 공유</h2>
+            <p class="fw_bold">우리의 새로운 시작,<br>함께 공유해요!</p>
+            <div class="clear">
+                <button class="btn_facebook" onmouseenter="on(this)" onmouseleave="off(this)">페이스북 공유하기</button>
+                <button class="btn_kakaotalk" onmouseenter="on(this)" onmouseleave="off(this)">카카오톡 공유하기</button>
+                <button class="btn_twitter" onmouseenter="on(this)" onmouseleave="off(this)">트위터 공유하기</button>
+                <button class="btn_linkCopy" onmouseenter="on(this)" onmouseleave="off(this)" onclick="urlCopy(this);">링크 복사하기</button>
+            </div>
+            <input type="text" class="inp_url" value="현재 페이지 경로" />
+            <p class="toastMsg">URL이 복사되었습니다.</p>
+        </section>
+        <!--// sns sharing -->
+        <!-- notice -->
+        <section class="section_notice">
+            <article>
+                <h2 class="fw_bold">꼭 읽어주세요.</h2>
+                <h3 class="fw_bold">&lt;새로운 시작을 함께해&gt; 이벤트</h3>
+                <ul>
+                    <li><span>본 이벤트는 1인 1회 참여하실 수 있습니다.</span></li>
+                    <li><span>10월 26일부터 11월 30일까지 인스타그램에 업로드된 포스팅에 한해 이벤트 참여가 인정됩니다.</span></li>
+                    <li><span>12월 31일까지 참여하신 계정이 전체 공개여야만 포인트를 지급해드릴 수 있습니다.<br />(친구공개, 비공개계정 지급 불가)</span></li>
+                    <li><span>해시태그를 모두 정확히 올려주셔야만 참여로 인정됩니다.</span></li>
+                    <li><span>10만원 포인트는 이벤트에 정상적인 방법으로 참여하신 분 중 100명을 추첨할 예정입니다.</span></li>
+                    <li><span>당첨되신 서포터님께는 이벤트에 참여한 인스타그램 계정의 DM으로 별도 안내드립니다.</span></li>
+                    <li><span>당첨 안내 DM에 7일간 답변이 없을 시 자동으로 당첨이 취소됩니다.</span></li>
+                    <li><span>지급된 포인트는 3개월간 사용 가능하며, 이후 자동 소멸됩니다.</span></li>
+                </ul>
+                <h3 class="fw_bold">&lt;펀딩으로 시작하자&gt; 기획전</h3>
+                <h4 class="fw_bold">[포인트 유의사항]</h4>
+                <ul>
+                    <li><span>포인트는 마이메뉴 &gt; 포인트 &gt; 포인트존에서 확인할 수 있습니다.</span></li>
+                    <li><span>회원가입 시 이벤트 참여 란에 [펀딩하자]를 입력하셔야 2,000원 포인트가 지급됩니다. 발급 후 7일 이내 사용할 수 있습니다.</span></li>
+                    <li><span>쿠폰은 1개의 아이디당 1장씩만 발급됩니다.</span></li>
+                    <li><span>쿠폰은 마이메뉴 &gt; 쿠폰 &gt; 쿠폰존에서 발급할 수 있습니다.</span></li>
+                    <li><span>6,000원 기획전 쿠폰팩은 해당 이벤트 페이지에 소개된 기획전에 포함된 프로젝트에 한하여 사용할 수 있습니다.</span></li>
+                    <li><span>6,000원 기획전 쿠폰 및 2,000원 앱쿠폰은 3만 원 이상 펀딩 시 사용할 수 있습니다.</span></li>
+                    <li><span>2,000원 앱 쿠폰은 와디즈 앱에서만 사용 가능합니다.</span></li>
+                </ul>
+                <h4 class="fw_bold">[쿠폰 유의사항]</h4>
+                <ul>
+                    <li><span>발급 후 10일 이내 사용할 수 있습니다.</span></li>
+                    <li><span>쿠폰은&nbsp;하나의 펀딩 당 1회만 사용 가능하며 타 쿠폰과 중복 사용이 불가능합니다.</span></li>
+                    <li><span>쿠폰 유효기간 종료 후 펀딩 취소 시 쿠폰은 반환되지 않습니다.</span></li>
+                    <li><span>이벤트 혜택, 기간, 포인트 지급일 등은 당사의 사정에 따라 조기 종료 및 변경될 수 있습니다.</span></li>
+                    <li><span>불법적이거나 비정상적인 방법으로 이벤트에 참여할 경우 시 당첨이 취소될 수 있습니다.</span></li>
+                    <li><span>본 이벤트는 당사 사정에 따라 변경 또는 조기 종료될 수 있습니다.</span></li>
+                </ul>
+            </article>
+        </section>
+        <!--// notice -->
+    </section>
+    <!--// container -->
+    <!-- footer -->
+    <footer>
+        <section class="section_footer">
+            <aside class="article_csCenter">
+                <h2 class="fw_bold">와디즈 대표 고객센터</h2>
+                <ul class="clear">
+                    <li class="tel"><em class="screen_out">대표 번호</em><a href="tel:1661-9056" class="fw_bold">1661-9056</a></li>
+                    <li><a href="https://pf.kakao.com/_pEeEl" target="_blank">카카오톡 채널@와디즈</a></li>
+                    <li><em class="screen_out">이메일 주소</em><a href="mailto:info@wadiz.kr">info@wadiz.kr</a></li>
+                    <li><em>W9 멤버십 고객센터</em><a href="tel:1811-9090">1811-9090</a></li>
+                </ul>
+            </aside>
+            <article class="article_companyInfo">
+                <h2 class="screen_out">회사 정보</h2>
+                <address>
+                    <span>와디즈플랫폼 (주)</span>
+                    <span>대표이사 최동철</span>
+                    <span>사업자등록번호 220-88-37661</span>
+                    <span>경기도 성남시 분당구 판교로 242 (삼평동) 판교디지털센터 A동 4층 402호</span>
+                </address>
+                <address>&copy; WADIZ Platform Co., Ltd.</address>
+            </article>
+            <nav class="article_widizApp">
+                <h2 class="screen_out">와디즈 앱 다운로드</h2>
+                <ul>
+                    <li class="ios"><a href="#">iOS 앱</a></li>
+                    <li class="android"><a href="#">안드로이드 앱</a></li>
+                </ul>
+            </nav>
+        </section>
+    </footer>
+    <!--// footer -->
+    <!-- notice -->
+    <aside class="section_btmNotice">
+        <div class="clear">
+            <h6>투자위험고지</h6>
+            <p>비상장기업 투자는 원금 손실의 가능성이 크니 <a href="#">투자 위험 안내</a>를 꼭 확인하세요.</p>
+        </div>
+    </aside>
+    <!--// notice -->
+    <!-- screen -->
+    <span class="screen">&nbsp;</span>
+    <!--// screen -->
+</section>
+<!--// wrap -->
+</body>
+</html>

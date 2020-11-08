@@ -1,0 +1,28 @@
+html{overflow:scroll;overflow-x:auto}
+body{min-width:320px;margin:0px;padding:0px;box-sizing:border-box;font-family:'Roboto', 'Noto Sans KR', sans-serif;font-size:14px;line-height:16px;color:#1d2129;word-break:keep-all;overflow-wrap:break-word}
+section, article, aside, nav, header, footer{display:block}
+button{display:block;background:none;;margin:0;padding:0;border:none;cursor:pointer}
+img{border:none;vertical-align:top}
+h1, h2, h3, h4, h5, h6{margin:0;padding:0;font-weight:normal}
+p{margin:0;padding:0}
+ol, ul, dl, li, dt, dd{display:block;margin:0;padding:0;/*list-style:none*/}
+textarea{margin:0;padding:0;border:none;resize:none}
+input{margin:0;padding:0;border:none;font-family:'Roboto', 'Noto Sans KR', sans-serif;font-weight:normal;vertical-align:baseline;-webkit-appearance:none;-moz-appearance:none;appearance:none}
+input:focus,textarea:focus{outline-style:none}
+a{text-decoration:none;outline:none}
+a:hover{text-decoration:none}
+address, em{font-style:normal}
+strong{font-weight:normal}
+table{border-collapse:collapse;border-spacing:0;vertical-align:baseline}
+th{font-weight:normal;text-align:left}
+
+/* ios style reset */
+body{-webkit-text-size-adjust:100%}
+button{-webkit-appearance:none}
+input[type='checkbox']{-webkit-appearance:checkbox;-webkit-border-radius:0}
+input[type='radio']{-webkit-appearance:radio;-webkit-border-radius:0}
+
+/* drag color */
+::selection{background:#00c4c4;color:#fff;text-shadow:0 1px 1px rgba(0,0,0,0.2)}
+::-moz-selection{background:#00c4c4;color:#fff;text-shadow:0 1px 1px rgba(0,0,0,0.2)}
+::-webkit-selection{background:#00c4c4;color:#fff;text-shadow:0 1px 1px rgba(0,0,0,0.2)}

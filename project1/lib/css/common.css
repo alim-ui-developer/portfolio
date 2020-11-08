@@ -1,0 +1,107 @@
+@import url("reset.css");
+@import url("style.css");
+@import url("slick.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Noto+Sans+KR:wght@300;500;700&display=swap");
+
+/* common class */
+.screen_out {
+    position: absolute;
+    top: -9999px;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.y_center {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.x_center {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.d_block {
+    display: block !important;
+}
+
+.d_inline-block {
+    display: inline-block !important;
+}
+
+.d_inline {
+    display: inline !important;
+}
+
+.d_table {
+    display: table !important;
+}
+
+.d_table-row {
+    display: table-row !important;
+}
+
+.d_table-cell {
+    display: table-cell !important;
+}
+
+.static {
+    position: static !important;
+}
+
+.relative {
+    position: relative !important;
+}
+
+.absolute {
+    position: absolute !important;
+}
+
+.fixed {
+    position: fixed !important;
+}
+
+.sticky {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+}
+
+.clear:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.ta-center {
+    text-align: center !important;
+}
+
+.ta-left {
+    text-align: left !important;
+}
+
+.ta-right {
+    text-align: right !important;
+}
+
+.fw_semibold {
+    font-weight: 400
+}
+
+.fw_bold {
+    font-weight: 700
+}

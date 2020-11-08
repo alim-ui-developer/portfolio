@@ -1,0 +1,1664 @@
+@import "mixin";
+
+// =================== wrap =================== //
+
+#wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+// =================== wrap =================== //
+
+
+// =================== header =================== //
+
+header {
+    position: relative;
+    @include border($d:bottom, $w:1px, $c:$offWhite);
+    background: $white;
+    padding: 0 50px;
+    z-index: 10;
+}
+
+// 전체 메뉴
+.section_header {
+    @include wrap;
+    display: flex;
+    width: 100%;
+    height: 55px;
+    @include pt(8px);
+    background: $white;
+    box-sizing: border-box;
+
+    h1 {
+        margin-right: 35px;
+
+        svg {
+            @include mt(6px);
+        }
+    }
+
+    .section_gnb {
+        display: flex;
+
+        // gnb
+        .gnb {
+            display: flex;
+
+            li {
+                @include fs19;
+                @include mr(35px);
+                @include pt(10px);
+                font-weight: 800;
+
+                a {
+                    padding: 10px;
+                    color: $black;
+
+                    &:hover {
+                        color: $aqua;
+                    }
+                }
+            }
+        }
+    }
+
+    // 더보기 메뉴 버튼   
+    .btn_etcMenu {
+        @include mt(14px);
+        @include pr(16px);
+        @include fs15;
+        position: relative;
+        color: #60656a;
+        cursor: pointer;
+
+
+        &:after {
+            position: absolute;
+            right: 0;
+            top: 6px;
+            display: block;
+            width: 9px;
+            height: 5px;
+            content: " ";
+            background: url("../../images/bg/arr1.png") 0 0 no-repeat;
+            transform: rotate(-180deg);
+        }
+
+        &.on:after {
+            -webkit-animation: rotate 500ms forwards;
+            -moz-animation: rotate 500ms forwards;
+            -ms-animation: rotate 500ms forwards;
+            animation: rotate 500ms forwards;
+        }
+
+        &.off:after {
+            -webkit-animation: revese-rotate 200ms forwards;
+            -moz-animation: revese-rotate 200ms forwards;
+            -ms-animation: revese-rotate 200ms forwards;
+            animation: revese-rotate 200ms forwards;
+        }
+    }
+
+    // 검색 및 회원 메뉴
+    .section_rightTop {
+        @include position($t:0px, $r:0px);
+        display: flex;
+
+        // 전체 메뉴
+        .article_totalSearch {
+            @include mt(8px);
+
+            .inner_totalSearch {
+                display: flex;
+                padding: 10px 18px;
+                background: $offWhite;
+                border-radius: 30px;
+
+                label {
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    @include hide;
+                    background: url("../../images/icon/ico_search.png") 0 50% no-repeat;
+                }
+
+                input[type="search"] {
+                    @include fs15;
+                    @include ml(6px);
+                    display: block;
+                    width: 215px;
+                    background: none;
+                }
+            }
+
+            // 최근 검색어 및 인기 검색어
+            .article_keyword {
+                @include position($t:48px, $l:0px);
+                width: 336px;
+                box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+                background: $white;
+
+                .tab_keyworld {
+                    display: flex;
+                    justify-content: space-around;
+                    @include border($d:bottom, $w:1px, $c:$offWhite);
+
+                    li {
+                        @include fs15(42px);
+                        position: relative;
+                        width: 50%;
+                        font-weight: 800;
+                        text-align: center;
+                        cursor: pointer;
+
+                        &.on {
+                            span {
+                                @include position($b:0px, $l:50%);
+                                display: inline-block;
+                                height: 100%;
+                                padding: 0 2px;
+                                @include border($d:bottom, $w:3px, $c:$black);
+                                transform: translateX(-50%);
+                            }
+                        }
+                    }
+                }
+
+                .inner_newKeyword {
+                    @include keyword();
+
+                    .empty {
+                        @include mt(20px);
+                        @include pt(35px);
+                        @include fs13(20px);
+                        text-align: center;
+                        color: $gray;
+                        box-sizing: border-box;
+                    }
+
+                    ol {
+                        li {
+                            @include keywordLst();
+
+                            a {
+                                @include fs13(28px);
+                                display: inline-block;
+                                width: calc(100% - 21px);
+                                color: $gray;
+                                @include dot1();
+                            }
+
+                            button {
+                                width: 21px;
+                                padding: 5px 0;
+                                @include hide;
+                                background: url("../../images/btn/btn_close.png") 100% 50% no-repeat;
+                                opacity: 0.15;
+                            }
+                        }
+                    }
+
+
+                }
+
+                .inner_hotKeyword {
+                    @include keyword();
+
+                    ol {
+                        li {
+                            @include keywordLst();
+
+                            em {
+                                @include mr(5px);
+                                width: 22px;
+                                text-align: right
+                            }
+
+                            a {
+                                @include fs13;
+                                display: block;
+                                width: calc(100% - 21px);
+                                color: $gray;
+                                @include dot1();
+                            }
+                        }
+                    }
+                }
+
+                .keywordBtmBtn {
+                    @include position($b:0px, $l:0px);
+                    width: 100%;
+                    padding: 10px 15px;
+                    @include border($d:bottom, $w:1px, $c:$offWhite);
+
+                    button {
+                        @include fs13;
+                        font-weight: 800;
+                        color: $lightGray;
+                        padding: 5px;
+                        float: right;
+                    }
+
+                    .btn_keywordAllClear {
+                        @include pl(14px);
+                        float: left;
+                        background: url("../../images/icon/ico_trashCan.png") 0 49% no-repeat;
+                    }
+                }
+            }
+
+        }
+
+        // 회원 메뉴
+        .article_memberNav {
+            ul {
+                @include fs15(38px);
+                @include mt(8px);
+                @include ml(10px);
+
+                li {
+                    float: left;
+                    margin: 0 8px;
+
+                    a {
+                        color: $gray;
+
+                        &:hover {
+                            color: $aqua;
+                        }
+                    }
+                }
+
+                .btn_pjtRequest {
+                    height: 38px;
+                    border: 1px solid $aqua;
+                    box-sizing: border-box;
+                    border-radius: 3px;
+                    text-align: center;
+                    font-weight: 800;
+                    @include mr(0);
+                    padding: 0 16px;
+                    color: $aqua;
+                    cursor: pointer;
+
+                    &.on {
+                        background: $aqua;
+                        color: $white;
+                    }
+                }
+            }
+        }
+
+        // 프로젝트 오픈 메뉴
+        .ariticle_pjtOpen {
+            position: relative;
+            @include position($t:55px, $r:-10px);
+            border: 1px solid $silver;
+            background: $white;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+
+            &:before {
+                display: block;
+                content: "";
+                @include position($t:-9px, $r:85px);
+                width: 14px;
+                height: 9px;
+                background: url("../../images/bg/bg_triangle.png") 0 0 no-repeat;
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 110px;
+                padding: 0 25px;
+                @include border($d:bottom, $w:1px, $c:$offWhite);
+                cursor: pointer;
+
+                &.on {
+                    background: #f7f7f7;
+                }
+
+                dl {
+                    display: inline-block;
+
+                    dt {
+                        @include fs17;
+                        font-weight: 800;
+                    }
+
+                    dd {
+                        @include mt(5px);
+                        @include fs15;
+                        color: $lightGray;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 더보기 메뉴
+.section_etcMenu {
+    @include position($t:55px, $l:0px);
+    display: flex;
+    width: 100%;
+    background: $white;
+    @include border($d:top, $w:1px, $c:$offWhite);
+    @include pt(48px);
+    @include pb(65px);
+    z-index: 10;
+
+    article {
+        @include wrap;
+        width: 100%;
+        display: flex;
+    }
+
+    .article_etcMenu {
+        width: 200px;
+        padding: 0 15px;
+        @include border($d:left, $w:1px, $c:$offWhite);
+
+        &:first-child {
+            margin-left: 180px;
+        }
+
+        h3 {
+            @include fs13;
+            color: #757575;
+            margin-bottom: 8px
+        }
+
+        ul {
+            li {
+                a {
+                    display: inline-block;
+                    padding: 8px 0;
+                    color: $black;
+
+                    &:hover {
+                        color: $aqua;
+                    }
+                }
+
+                .bedge_new {
+                    @include fs10;
+                    @include ml(3px);
+                    @include position($p: relative, $t:-2px);
+                    display: inline-block;
+                    padding: 3px 7px;
+                    border-radius: 10px;
+                    background: #ff6666;
+                    color: $white;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+// =================== header =================== //
+
+
+
+// =================== visual =================== //
+
+.visualWrap {
+    width: 100%;
+    background: $skyblue;
+
+    .section_visual {
+        position: relative;
+        width: 78%;
+        max-width: 998px;
+        min-width: 998px;
+        margin: 0 auto;
+        @include pt(95px);
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .title {
+            @include position($p:relative, $t:-10px);
+        }
+
+        .subTxt {
+            @include position($t:80px, $l:0);
+            width: 16%;
+        }
+
+        .period {
+            width: 2%;
+            @include position($b:35px, $r:0);
+        }
+
+        .model {
+            width: 100%;
+            @include position($b:0px, $l:45%);
+            transform: translateX(-50%);
+        }
+    }
+}
+
+// =================== visual =================== //
+
+
+
+// =================== container =================== //
+
+// video
+.section_video {
+    height: 560px;
+    background: $aqua;
+
+    article {
+        @include position($p:relative, $t:-175px);
+        max-width: 830px;
+        min-width: 830px;
+        margin: 0 auto;
+
+        .tab_youtube {
+            display: flex;
+            @include border($d:bottom, $w:3px, $c:$white);
+
+            li {
+                flex-grow: 1;
+                padding: 18px 5px;
+                border-radius: 8px 8px 0 0;
+                @include fs17;
+                text-align: center;
+                color: $silver;
+                background: $gray;
+                box-shadow: inset 8px 0 12px rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+
+                &.on {
+                    font-weight: 800;
+                    color: $black;
+                    background: $white;
+                    box-shadow: none;
+                }
+            }
+        }
+
+        .iframeBox {
+            position: relative;
+            width: 100%;
+            @include pb(56.25%); // 16:9 비율
+            background: url("../../images/bg/bg_wadiz.png") 50% 48% $black no-repeat;
+
+            iframe {
+                @include position($t:0, $l:0);
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .btn_youtubeLink {
+            @include bigBtn;
+            margin: 80px auto 0;
+
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                color: $white;
+            }
+
+            &.on {
+                @include bigBtn($bg:$darkMint);
+            }
+        }
+    }
+}
+
+// event tab
+.tab_eventCon{
+    width:100%;
+    height:150px;
+    background:#fff;
+
+    ul{
+        @include container;
+        display:flex;
+        height:100%;
+
+        li{
+            flex-grow: 1;
+            @include pt(42px);
+            @include fs21;
+            text-align:center;
+            font-weight:700;
+            color:$gray;
+            cursor:pointer;
+
+            &.on{
+                @include border($d:bottom, $w:3px, $c:$black);
+                color:$black;
+
+                em{
+                    color:$gray;
+                }
+            }
+
+            em{
+                display:block;
+                @include mb(10px);
+                @include fs14;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &.fix{
+        position:fixed;
+        top:0;
+        left:0;
+        z-index:5;
+    }
+}
+
+// event
+section[class^=section_event]{
+    @include position($p:relative);
+
+    .tit_evt{
+        @include fs36;
+    }
+
+    .txt_evt{
+        @include fs17(27px);
+        color:$gray;
+    }
+
+    .txt_evt2{
+        @include fs21;
+        color:$gray;
+    }
+
+    .tit_hashtag{
+        @include tagTit;
+    }
+
+   .lst_hashtag{
+        display:inline-block;
+
+        li{
+            @include tagLst;
+        }
+   }
+
+   .article_info{
+        .infoBox{
+            h3{
+                opacity:0;
+
+                em{
+                   @include position($p:relative,$b:-10px);
+                   opacity:0;
+                }
+            }
+            
+            p{
+                @include position($p:relative,$b:-10px);
+                opacity:0;
+            }
+        }
+    }
+}
+
+// event1
+.section_event1{
+    .img{
+        @include position($b:0,$r:-24%);
+        width:auto;
+        height:417px;
+        opacity:0;
+
+        img{
+            width:auto;
+            height:100%
+        }
+    }
+
+    // 펀딩으로 시작하자
+    .article_info{
+        width:100%;
+        @include pt(140px);
+        background:$yellow;
+
+        .infoBox{
+            height:440px;
+            @include container;
+            @include pt(108px);
+            box-sizing: border-box;
+            text-align:center;
+            background:$white;
+
+            h2{
+                @include position($t:-65px,$l:50%);
+                transform: translate(-50%);
+            }
+
+            h3{
+                @include mb(40px);
+                @include fs21;
+                color:$gray;
+
+                em{
+                    display:block;
+                    @include mt(20px);
+                    @include fs46;
+                    color:$black;
+                }
+            }
+
+            p{
+                @include fs17(27px);
+                color:$gray;
+            }
+        }
+    }
+
+    // 혜택
+    .article_benefit{
+        @include pt(70px);
+        @include pb(82px);
+        text-align:center;
+
+        h4{
+            @include mb(32px);
+        }
+
+        .img_coupon{
+            width:240px;
+            height:auto;
+            margin:0 auto 40px;
+
+            img{
+                width:100%;
+                height:auto;
+            }
+        }
+    }
+
+    // 참여방법
+    .article_howto{
+        padding:70px 0 80px;
+        text-align:center;
+        background:$offWhite2;
+
+        h4{
+            @include mb(35px);
+        }
+
+        h5{
+            display:inline-block;
+            @include mb(25px);
+            padding:8px 16px;
+            border-radius:50px;
+            @include fs17;
+            text-align:center;
+            text-transform:uppercase;
+            color:$white;
+            background:$black;
+        }
+
+        .lst_adPoster{
+            width:480px;
+            margin:45px auto 80px;
+            box-shadow:0 10px 20px rgba(0,0,0,0.2);
+
+            li{
+                img{
+                    width:100%;
+                    height:100%
+                }
+            }
+
+            .slick-arrow{
+                @include position($t:50%);
+                width:19px;
+                height:22px;
+                @include hide;
+                transform:translateY(-50%);
+                background-size:cover
+            }
+
+            .slick-prev{
+                left:-50px;
+                background:url("../../images/btn/btn_prev.png") 0 0 no-repeat;
+            }
+
+            .slick-next{
+                right:-50px;
+                background:url("../../images/btn/btn_next.png") 0 0 no-repeat;
+            }
+        }
+
+
+    }
+
+    .img_instagram{
+        @include fs17(27px);
+        color:$gray;
+
+        img{
+            display:block;
+            margin:0 auto;
+        }
+    }
+
+    .btn_instagram{
+        @include mdlBtn;
+        margin:40px auto 0;
+
+        a{
+            @include mdlBtnInner;
+        }
+
+        &.on{
+            background:$darkMint;
+        }
+    }
+}
+
+// evnet2
+.section_event2{
+    .img{
+        @include position($b:0,$l:-8%);
+        width:auto;
+        height:417px;
+        opacity:0;
+
+        img{
+            width:auto;
+            height:100%
+        }
+    }
+
+    // 새로운 시작을 함께해
+    .article_info{
+        width:100%;
+        @include pt(140px);
+        background:$purple;
+
+        .infoBox{
+            height:440px;
+            @include container;
+            @include pt(108px);
+            box-sizing: border-box;
+            text-align:center;
+            background:$white;
+
+            h2{
+                @include position($t:-65px,$l:50%);
+                transform: translate(-50%);
+            }
+
+            h3{
+                @include mb(40px);
+                @include fs21;
+                color:$gray;
+
+                em{
+                    display:block;
+                    @include mt(20px);
+                    @include fs46;
+                    color:$black;
+                }
+            }
+
+            p{
+                @include fs17(27px);
+                color:$gray;
+            }
+        }
+    }
+
+    // 혜택
+    .article_benefit{
+        @include pt(70px);
+        @include pb(82px);
+        text-align:center;
+        background:$offWhite;
+
+        h4{
+            @include mb(20px);
+        }
+
+        .lst_benefit{
+            @include container;
+            display:flex;
+            justify-content:space-around;
+            @include mt(45px);
+
+            > div{
+                width:240px;
+                height:auto;
+                @include pt(130px);
+                background-position:100% 0;
+                background-repeat:no-repeat;
+                background-size:100% auto;
+
+                &:nth-child(1){
+                    background-image:url("../../images/coupon_2000p.png");
+                }
+
+                &:nth-child(2){
+                    background-image:url("../../images/coupon_6000w.png");
+                }
+
+                &:nth-child(3){
+                    background-image:url("../../images/coupon_2000w.png");
+                }
+
+                h5{
+                    @include fs19;
+                    @include mb(5px);
+                }
+
+                p{
+                    @include fs15(23px);
+                }
+            }
+        }
+
+        .btn_coupon{
+            @include mdlBtn;
+            margin:40px auto 25px;
+
+            a{
+                @include mdlBtnInner;
+            }
+
+            &.on{
+                background:$darkMint;
+            }
+        }
+    }
+}
+
+// 기획전
+.tit_exhibition{
+    @include mt(120px);
+    @include fs36;
+    text-align:center;
+}
+
+section[class^=section_exhibition]{
+    .contents_exhibition{
+        @include container;
+        @include mt(85px);
+
+        .article_exhibition{
+            display:flex;
+            flex-direction:row-reverse;
+            justify-content:space-between;
+            
+            .txt{
+                @include position($p: relative);
+                width:48%;
+                height:340px;
+
+                h3{
+                    display:inline-block;
+                    @include mb(10px);
+                    padding:8px 16px;
+                    border-radius:50px;
+                    @include fs16;
+                    text-align:center;
+                    text-transform:uppercase;
+                    color:$white;
+                    background:$black;
+                }
+
+                h4{
+                    @include fs30;
+                    @include mb(28px);
+                }
+
+                p{
+                    @include fs17(25px);
+                    color:$gray;
+                }
+
+                .hashtag{
+                    @include position($b:0,$r:0);
+                    width:100%;
+
+                    .tit_hashtag{
+                        @include tagTit;
+                    }
+
+                    .lst_hashtag{
+                        display:inline-block;
+
+                        li{
+                            @include tagLst;
+                        }
+                    }
+                }
+            }
+
+            .img{
+                width:48%;
+                height:340px;
+                border-radius:5px;
+                box-shadow:0 3px 26px rgba(0, 0, 0, 0.2);
+                overflow:hidden;
+
+                &.on{
+                    a{
+                        -webkit-animation: zoomIn1 1000ms forwards;
+                        -moz-animation: zoomIn1 1000ms forwards;
+                        -ms-animation: zoomIn1 1000ms forwards;
+                        animation: zoomIn1 1000ms forwards;
+                    }
+                }
+
+                &.off{
+                    a{
+                        -webkit-animation: zoomOut1 500ms forwards;
+                        -moz-animation: zoomOut1 500ms forwards;
+                        -ms-animation: zoomOut1 500ms forwards;
+                        animation: zoomOut1 500ms forwards;
+                    }
+                }
+
+                a{
+                    display:block;
+                    width:100%;
+                    height:100%;
+                    @include hide;
+                    background-size:auto 100%;
+                }
+            }
+        } 
+
+        .lst_exhibition{
+            display:flex;
+            justify-content: space-between;
+            width:100%;
+            @include mt(45px);
+
+            .lstCon{
+                width:225px;
+                
+                .img{
+                    position:relative;
+                    width:100%;
+                    height:122px;
+                    @include mb(8px);
+                    overflow:hidden;
+                    border:1px solid $offWhite;
+                    box-sizing:border-box;
+
+                    &.on{
+                        img{
+                            -webkit-animation: zoomIn2 1000ms forwards;
+                            -moz-animation: zoomIn2 1000ms forwards;
+                            -ms-animation: zoomIn2 1000ms forwards;
+                            animation: zoomIn2 1000ms forwards;
+                        }
+                    }
+
+                    &.off{
+                        img{
+                            -webkit-animation: zoomOut2 500ms forwards;
+                            -moz-animation: zoomOut2 500ms forwards;
+                            -ms-animation: zoomOut2 500ms forwards;
+                            animation: zoomOut2 500ms forwards;
+                        }
+                    }
+
+                    a{
+                        @include position($t:50%, $l:0);
+                        transform:translateY(-50%);
+                        background:$aqua;
+                    }
+
+                    img{
+                        width:100%;
+                        height:auto;
+                    }
+                }
+
+                h6{
+                    @include fs15;
+                    @include dot2;
+                    color:$darkGray;
+                }
+
+                ul{
+                    @include mt(6px);
+
+                    li{
+                        float:left;
+
+                        &.percent{
+                            @include mr(5px);
+                            @include fs13;
+                            font-weight:700;
+                            color:$aqua;
+                        }
+
+                        &.keyword{
+                            @include fs13;
+                            color:$gray;
+                        }
+                    }
+                }
+            }
+
+            .btn_more{
+                width:225px;
+                height:122px;
+                @include fs15;
+                font-weight:700;
+                background:url("../../images/bg/arr2.png") 124px 54px $offWhite no-repeat;
+
+                &.on{
+                    background-color:$aqua;
+                    -webkit-animation: zoomIn3 500ms forwards;
+                    -moz-animation: zoomIn3 500ms forwards;
+                    -ms-animation: zoomIn3 500ms forwards;
+                    animation: zoomIn3 500ms forwards;
+                }
+
+                &.off{
+                    background-color:$offWhite;
+                    -webkit-animation: zoomOff3 500ms forwards;
+                    -moz-animation: zoomOff3 500ms forwards;
+                    -ms-animation: zoomOff3 500ms forwards;
+                    animation: zoomOff3 500ms forwards;
+                }
+
+                a{
+                    display:block;
+                    width:100%;
+                    height:100%;
+                    padding:48px 0 0 24px;
+                    box-sizing:border-box;
+                    color:$darkGray;
+                }
+            }
+        }
+    }
+}
+
+.section_exhibition1{
+    .contents_exhibition{
+        .article_exhibition{
+            .img{
+                a{
+                    background:url("../../images/bg/bg_exhibition1.jpg") 50% no-repeat;
+                }
+            }
+        }
+    }
+}
+
+.section_exhibition2{
+    .contents_exhibition{
+        .article_exhibition{
+            flex-direction:row !important;
+
+            .img{
+                a{
+                    background:url("../../images/bg/bg_exhibition2.jpg") 50% no-repeat;
+                }
+            }
+        }
+    }
+}
+
+.section_exhibition3{
+    @include pb(120px);
+
+    .contents_exhibition{
+        .article_exhibition{
+            .img{
+                a{
+                    background:url("../../images/bg/bg_exhibition3.jpg") 50% no-repeat;
+                }
+            }
+        }
+    }
+}
+
+// 펀딩을 소개합니다
+.section_introduce{
+    padding:100px 0;
+    background:$offWhite;
+    
+    .article_introduce{
+        @include container;
+
+        h2{
+            @include fs36;
+            text-align:center;
+            @include mb(20px);
+        }
+
+        > p{
+            @include fs17(27px);
+            text-align:center;
+            color:$gray;
+        }
+
+        article{
+            display:flex;
+            justify-content: space-around;
+            @include mt(82px);
+
+            div{
+                width:276px;
+                @include pt(250px);
+
+                &:nth-child(1){
+                    background:url("../../images/img_introduce1.jpg") 0 0 no-repeat;
+                    background-size:100% auto;
+                }
+
+                &:nth-child(2){
+                    background:url("../../images/img_introduce2.jpg") 0 0 no-repeat;
+                    background-size:100% auto;
+                }
+
+                &:nth-child(3){
+                    background:url("../../images/img_introduce3.jpg") 0 0 no-repeat;
+                    background-size:100% auto;
+                }
+
+                h3{
+                    @include fs20;
+                    @include mb(18px);
+                }
+
+                p{
+                    @include fs15(23px);
+                    color:$gray;
+                }
+            }
+        }
+    }
+}
+
+// 믿고 펀딩하는 와디즈
+.section_trust{
+    @include mt(100px);
+
+    h2{
+        @include fs36;
+        text-align:center;
+        @include mb(45px);
+    }
+
+    nav{
+        div{
+            position:relative;
+
+            &:nth-child(1){
+                background:#00cccc;
+
+                dl{
+                    background:url("../../images/bg/bg_trust1.png") 84% 50% no-repeat;
+                    background-size:auto 100%;
+                }
+            }
+
+            &:nth-child(2){
+                background:#64dede;
+
+                dl{
+                    background:url("../../images/bg/bg_trust2.png") 84% 50% no-repeat;
+                    background-size:auto 100%;
+                }
+            }
+
+            &:nth-child(3){
+                background:#aeebeb;
+
+                dl{
+                    background:url("../../images/bg/bg_trust3.png") 84% 50% no-repeat;
+                    background-size:auto 100%;
+                }
+            }
+        }
+
+        dl{
+            @include container;
+            padding:30px 0 25px;
+            color:$darkMint; 
+            cursor:pointer;
+
+            &.on{
+                &:after{
+                    opacity:0.7;
+                }
+            }
+
+            &:after{
+                position:absolute;
+                top:50%;
+                right:2%;
+                display:block;
+                content:"";
+                width:48px;
+                height:48px;
+                background:url("../../images/btn/btn_go.png") 0 0 no-repeat;
+                background-size:100% auto;
+                opacity:0.15;
+                transform: translateY(-50%);
+            }
+
+            dt{
+                @include fs32;
+                text-indent:19%;
+            }
+
+            dd{
+                @include fs17;
+                text-indent:19%;
+            }
+        }
+    }
+}
+
+// sns sharing
+.section_sns {
+    padding: 115px 0;
+    text-align: center;
+    background: url("../../images/bg/bg_snsSharing.png") 50% no-repeat;
+    background-size: cover;
+
+    p {
+        @include fs36(44px);
+        color: $white;
+    }
+
+    div {
+        display: inline-block;
+        @include mt(26px);
+
+        button {
+            float: left;
+            display: block;
+            width: 56px;
+            height: 56px;
+            @include ml(25px);
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            background-color: rgba(255, 255, 255, 0.15);
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            @include hide;
+
+            &:first-child {
+                margin: 0;
+            }
+
+            &.btn_facebook {
+                background-image: url("../../images/btn/btn_facebook.png");
+            }
+
+            &.btn_kakaotalk {
+                background-image: url("../../images/btn/btn_kakaotalk.png");
+            }
+
+            &.btn_twitter {
+                background-image: url("../../images/btn/btn_twitter.png");
+            }
+
+            &.btn_linkCopy {
+                background-image: url("../../images/btn/btn_linkCopy.png");
+            }
+
+            &.on {
+                background-color: rgba(255, 255, 255, 0.45);
+            }
+        }
+    }
+
+    .inp_url {
+        position: absolute;
+        top: -9999px;
+        opacity: 0
+    }
+
+    .toastMsg {
+        position: fixed;
+        left: 50%;
+        bottom: 80px;
+        display: inline-block;
+        padding: 12px 40px;
+        border-radius: 50px;
+        @include fs13;
+        color: $white;
+        background: rgba(0, 0, 0, 0.8);
+        transform: translateX(-50%);
+        z-index: 5;
+        opacity: 0;
+    }
+}
+
+// notice
+.section_notice {
+    padding: 80px 0;
+    background: $offWhite;
+
+    article {
+        @include container;
+        @include fs15;
+        color: $gray;
+
+        h2 {
+            @include fs36;
+            text-align: center
+        }
+
+        h3 {
+            @include mt(30px);
+            @include fs15;
+        }
+
+        h4 {
+            @include mt(25px);
+        }
+
+        ul {
+
+            li {
+                margin: 3px 0;
+
+                &:before {
+                    display: block;
+                    float: left;
+                    content: "-";
+                    width: 12px;
+                }
+
+                &:after {
+                    display: block;
+                    content: "";
+                    clear: both
+                }
+
+                span {
+                    display: block;
+                    float: left;
+
+                }
+            }
+        }
+
+    }
+}
+
+// =================== container =================== //
+
+
+
+// =================== footer =================== //
+
+footer {
+    height: 135px;
+    @include border($d:top, $w:1px, $c:$offWhite);
+    padding: 32px 50px 0;
+    box-sizing: border-box;
+
+    .section_footer {
+        display: flex;
+        @include wrap;
+
+        .article_csCenter {
+            width: 40%;
+            @include mr(100px);
+
+            h2 {
+                @include fs13;
+                letter-spacing: -1px;
+            }
+
+            ul {
+                li {
+                    float: left;
+                    @include fs12;
+                    font-weight: 800;
+                    color: $lightGray;
+
+                    &:not(:first-child) {
+                        @include mt(5px)
+                    }
+
+                    &:not(:first-child):before {
+                        float: left;
+                        display: block;
+                        content: "";
+                        width: 1px;
+                        height: 9px;
+                        margin: 3px 6px 0;
+                        background: $silver;
+                    }
+
+                    a {
+                        color: $lightGray;
+                    }
+
+                    em {
+                        @include mr(5px)
+                    }
+                }
+
+                .tel {
+                    @include fs19;
+                    letter-spacing: 1px;
+
+                    a {
+                        color: $black;
+                    }
+                }
+            }
+        }
+
+        .article_companyInfo {
+            width: 30%;
+            @include mr(100px);
+
+            address {
+                @include fs12;
+                font-weight: 800;
+                color: $black;
+
+                &:last-child {
+                    @include mt(8px)
+                }
+
+                span {
+                    display: inline-block;
+                    margin: 2px 0;
+                    color: $lightGray;
+
+                    &:not(:last-child):after {
+                        float: right;
+                        display: block;
+                        content: "";
+                        width: 1px;
+                        height: 9px;
+                        margin: 3px 6px 0;
+                        background: $silver;
+                    }
+                }
+            }
+        }
+
+        .article_widizApp {
+            ul {
+                display: flex;
+
+                li {
+                    @include fs12;
+                    @include pl(25px);
+                    font-weight: bold;
+
+                    &.ios {
+                        background: url("../../images/icon/ico_appStore.png") 0 50% no-repeat;
+                    }
+
+                    &.android {
+                        background: url("../../images/icon/ico_googleStore.png") 0 50% no-repeat;
+                    }
+
+                    &:first-child {
+                        @include mr(20px);
+                    }
+
+                    a {
+                        color: $black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// =================== footer =================== //
+
+
+
+// =================== etc =================== //
+
+.section_btmNotice {
+    padding: 40px 0;
+    text-align: center;
+    background: $black;
+
+    div {
+        display: inline-block;
+        color: $lightGray;
+
+        h6 {
+            float: left;
+            @include mr(5px);
+            @include fs13;
+            font-weight: 800;
+        }
+
+        p {
+            float: left;
+            @include fs13;
+
+            a {
+                color: $lightGray;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+// =================== etc =================== //
+
+
+// =================== keyframe =================== //
+// rotate
+@keyframes rotate {
+    from {
+        transform: rotate(-180deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes revese-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-180deg);
+    }
+}
+
+// background zoom
+@keyframes zoomIn1 {
+    from {
+        background-size:auto 100%;
+    }
+
+    to {
+        background-size:auto 105%;
+    }
+}
+
+@keyframes zoomOut1 {
+    from {
+        background-size:auto 105%;
+    }
+
+    to {
+        background-size:auto 100%;
+    }
+}
+
+// scale zoom
+@keyframes zoomIn2 {
+    from {
+        transform: scale(1.1,1.1);
+        opacity:1;
+    }
+
+    to {
+        transform: scale(1.2,1.2);
+        opacity:0.8;
+    }
+}
+
+@keyframes zoomOut2 {
+    from {
+        transform: scale(1.2,1.2);
+    }
+
+    to {
+        transform: scale(1.1,1.1);
+    }
+}
+
+// background zoom
+@keyframes zoomIn3 {
+    from {
+        background-position:124px 54px;
+    }
+
+    to {
+        background-position:136px 54px;
+    }
+}
+
+@keyframes zoomOff3 {
+    from {
+        background-position:136px 54px;
+    }
+
+    to {
+        background-position:124px 54px;
+    }
+}
