@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script type="text/javascript" src="lib/js/slick.js"></script>
+    <script type="text/javascript" src="lib/js/motion.js"></script>
+    <script type="text/javascript" src="lib/js/flowerShower.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/font.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/style.css" />
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <title>벅스의 스무살 - 벅스</title>
+    <script>
+    $(document).ready(function(){
+        $("header").load("include/header.html");
+        $("#visualWrap").load("include/visual.html",function(){
+            $(this).find(".gnbWrap").find("li").eq(3).addClass("on");
+        });
+        $("footer").load("include/footer.html");
+     });
+    </script>
+</head>
+<body>
+<!-- header -->
+<header class="clear">
+    <!-- include/header.html -->
+</header>
+<!--// header -->
+<!-- visual -->
+<section id="visualWrap">
+    <!-- include/visual.html -->
+</section>
+<!-- visual -->
+<!-- vip event -->
+<section id="vipEventWrap">
+    <h3>최애해줘서 고마워요!</h3>
+    <p>#벅스덕분에 음악 듣는 게 행복하다면?<br />벅스를 애정하는 찐친께 감사의 마음을 담아 준비했습니다.</p>
+    <p class="gift"><em>FLEX하게 iPhone 12 Pro 20대 선물!</em></p>
+    <a href="#" class="btn_vipEvent"><span>VIP 이벤트 참여하기</span></a>
+    <article class="notice">
+        <h4>참여 안내</h4>
+        <ul>
+            <li><span>본 이벤트는 벅스VIP라운지에서 응모하실 수 있습니다.</span></li>
+            <li><span>이벤트 기간 : 2020/11/05 ~ 2020/12/04</span></li>
+            <li><span>당첨자 발표 : 2020/12/10</span></li>
+            <li><span>동일 이벤트 참여는 계정 당 1회만 가능합니다.</span></li>
+            <li><span>5만원 이상의 경품은 제세공과금이 발생하며 벅스에서 부담합니다. 세금신고를 위해 당첨자의 주소, 신분증사본이 필요하며<br />당첨되신 분들께 개별연락을 통해 안내해드리오니 이벤트 참여시 반드시 연락가능한 본인의 연락처를 기재해주세요.</span></li>
+        </ul>
+    </article>
+</section>
+<!-- vip event -->
+<!-- footer -->
+<footer>
+    <!-- include/footer.html -->
+</footer>
+<!--// footer -->
+</body>
+</html>

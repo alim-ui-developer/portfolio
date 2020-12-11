@@ -1,0 +1,1643 @@
+@import "common.scss";
+@import "mixin.scss";
+
+/* header */
+header{
+    @include position($t:30px, $l:30px, $z:5);
+    width:calc(100% - 60px);
+
+    h1{
+        float:left;
+    }
+
+    .btn_share{
+        @include position($p:relative);
+        float:right;
+        width:73px;
+        height:32px;
+        @include border-all($c:rgba(255,255,255,0.5));
+        @include font($s:13px, $lh:32px, $a:left, $c:$white);
+        text-indent: 33px;
+
+        &:after{
+            @include position($t:9px,$l:13px);
+            display:block;
+            content:"";
+            width:14px;
+            height:14px;
+            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-189px, $s:1683px auto);
+        }
+    }
+}
+
+/* visual */
+#visualWrap{
+    @include position($p:relative);
+    width:100%;
+    height:750px;
+    @include bg-img($url:"/images/bg/bg_20thAnniversary.gif", $x:50%, $y:50%, $s:cover);
+
+    h2{
+        width:1140px;
+        height:auto;
+        margin:0 auto;
+        padding-top:194px;
+
+        img{
+            width:100%;
+            height:auto;
+        }
+    }
+
+    .gnbWrap{
+        @include position($b:0px,$l:50%);
+        width:1100px;
+        transform: translateX(-50%);
+
+        ul{
+            display:flex;
+            width:100%;
+            height:86px;
+            margin:0 auto;
+
+            li{
+                flex-grow:1;
+                @include font($s:22px, $lh:86px, $a:center);
+                @include border($d:left, $c:$charcoal);
+                @include bg-color($c:$black);
+
+                a{
+                    color:$gray;
+                }
+
+                &.on{
+                    background:linear-gradient(90deg, $pink, $orange);
+
+                    a{
+                        color:$white;
+                    }
+                }
+
+                &:first-child{
+                    border:none;
+                }
+            }
+        }
+    }
+}
+
+/* footer */
+footer{
+    @include position(relative);
+    width:100%;
+    padding:30px 0;
+    @include border($d:top,$c:$sliver);
+    @include bg-color($c:$offwhite);
+    text-align:center;
+
+    div{
+        @include display($d:inline-block);
+
+        address{
+            float:left;
+            margin-right:8px;
+            @include font($s:12px, $lh:28px, $c:$charcoal);
+        }
+
+        .btn_login{
+            float:left;
+            width:63px;
+            height:28px;
+            @include border-all($c:lightGray);
+            @include bg-color($c:$white);
+            @include font($s:12px, $lh:28px, $a:center, $c:$charcoal);
+        }
+    }
+
+    .btn_top{
+        @include position($p:fixed,$b:35px,$r:70px);
+        width:56px;
+        height:56px;
+        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1627px, $y:-832px, $s:1683px auto);
+        @include hideTxt;
+    }
+}
+
+/* timeline */
+#timelineWrap{
+    @include position($p:relative);
+    @include padding($d:top, $n:130px);
+    @include padding($d:bottom, $n:130px);
+
+    &:after{
+        @include position($b:50px, $l:0, $z:-1);
+        display:inline-block;
+        content:"";
+        width:5157px;
+        height:570px;
+        @include bg-img($url:"/images/bg/bg_recordArtist20201109.jpg", $x:0, $y:0, $r:no-repeat);
+        animation:timelineBg linear 100s infinite;
+    }
+
+    @keyframes timelineBg{
+        0%{
+            transform: translateX(0);
+        }
+        100%{
+            transform: translateX(-50%);
+        }
+    }
+
+    .subTit{
+        @include font($s:50px, $lh:54px, $w:700, $a:center);
+    }
+
+    .time{
+        @include font($s:42px, $lh:94px, $w:800, $a:center);
+
+        em{
+            @include font($s:90px, $lh:94px);
+        }
+    }
+
+    .timeline{
+        width:1100px;
+        margin:0 auto;
+        @include position($p:relative, $t:0, $l:0, $z:1);
+
+       &:before {
+            content:"";
+            @include position($t:0, $r:0, $b:0, $l:0, $z:-1);
+            @include bg-color($c:rgba(255,255,255,0.7));
+            @include blur($n:15px);
+       };
+
+        li{
+            @include position($p:relative);
+            float:left;
+            width:14.2%;
+            @include margin($d:top, $n:48px);
+            @include margin($d:bottom, $n:30px);
+            @include padding($d:left, $n:20px);
+            @include border($d:top, $c:$sliver);
+            @include font($s:14px, $lh:24px, $c:$darkgray);
+            letter-spacing:-1px;
+
+            &:before{
+                @include position($t:-3px);
+                display:block;
+                content:"";
+                width:6px;
+                height:6px;
+                border-radius:10px;
+                @include bg-color($c:$black);
+            }
+
+            span{
+                display:block;
+                margin:40px 0 15px; 
+                @include font($s:18px, $lh:22px, $w:800);
+            }
+        }
+    }
+
+    .btn_hitsong{
+        @include btn($w:316px, $h:68px, $s:18px, $lh:68px, $a:center, $c:$white, $br:60px, $bg:$black);
+        margin:60px auto 0;
+    }
+}
+
+/* first Record */
+#firstRecordWrap{
+    @include padding($d:top, $n:130px);
+    @include padding($d:bottom, $n:135px);
+    @include bg-color($c:$offwhite);
+
+    div{
+        display:flex;
+        width:1100px;
+        margin:0 auto;
+    }
+
+    p{
+        width:50%;
+        @include font($s:32px, $lh:44px, $w:800, $a:center);
+
+        span{
+            display:block;
+            @include font($s:38px, $lh:66px, $w:800, $a:center);
+            
+            em{
+                @include padding($d:right, $n:5px);
+                @include font($s:64px, $lh:66px, $w:800);
+            }
+
+            &:before{
+                display:block;
+                content:"";
+                margin:50px auto 55px;
+            }
+        }
+
+        &:nth-child(2){
+            span{ 
+                &:before{
+                    width:302px;
+                    height:350px;
+                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-768px, $y:0, $s:1683px auto);
+                }
+            }
+        }
+
+        &:nth-child(3){
+            span{ 
+                &:before{
+                    width:356px;
+                    height:350px;
+                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-400px, $y:0, $s:1683px auto);
+                }
+            }
+        }
+    }
+}
+
+/* tone */
+#toneWrap{
+    @include padding($d:top, $n:130px);
+    @include padding($d:bottom, $n:270px);
+    @include bg-img($url:"/images/bg/bg_recordSoundQuality.jpg", $x:50%, $y:0, $s:cover);
+
+    h3{
+        @include font($s:50px, $lh:56px, $w:800, $a:center, $c:$white);
+    }
+
+    ul{
+        display:flex;
+        width:1180px;
+        margin:90px auto 0;
+
+        li{
+            width:calc(25% - 40px);
+            margin:0 20px;
+            @include padding($d:top, $n:235px);
+            @include font($s:18px, $lh:22px, $a:center, $c:$orange);
+
+            em{
+                display:block;
+                @include margin($d:top, $n:8px);
+                @include font($s:22px, $lh:26px, $w:800, $a:center, $c:$white);
+            }
+
+            &:nth-child(1){
+                @include bg-img($url:"/images/img/img_soundQuality1.jpg", $x:0, $y:0, $s:100% auto);
+            }
+            
+            &:nth-child(2){
+                @include bg-img($url:"/images/img/img_soundQuality2.jpg", $x:0, $y:0, $s:100% auto);
+            }
+
+            &:nth-child(3){
+                @include bg-img($url:"/images/img/img_soundQuality3.jpg", $x:0, $y:0, $s:100% auto);
+            }
+
+            &:nth-child(4){
+                @include bg-img($url:"/images/img/img_soundQuality4.jpg", $x:0, $y:0, $s:100% auto);
+            }
+        }
+    }
+}
+
+/* second Record */
+#secondRecordWrap{
+    width:1100px;
+    margin:0 auto;
+    @include padding($d:top, $n:130px);
+    @include padding($d:bottom, $n:105px);
+
+    p{
+        @include margin($d:bottom, $n:65px);
+        @include font($s:50px, $lh:56px, $w:800, $a:center);
+    }
+
+    ul{
+        display:flex;
+        flex-wrap:wrap;
+    
+        li{
+            @include position($p:relative);
+            width:50%;
+            height:270px;
+            @include margin($d:top, $n:25px);
+            @include margin($d:bottom, $n:25px);
+
+            &:before{
+                @include position($t:0, $l:0);
+                display:block;
+                content:"";
+                width:271px;
+                height:271px;
+            }
+
+            &:nth-child(1){
+                &:before{
+                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1387px, $y:-416px, $s:1683px auto);
+                }
+            }
+
+            &:nth-child(2){
+                &:before{
+                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-416px, $s:1683px auto);
+                }
+            }
+
+            &:nth-child(3){
+                &:before{
+                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1387px, $y:-143px, $s:1683px auto);
+                }
+            }
+
+            &:nth-child(4){
+                &:before{
+                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-143px, $s:1683px auto);
+                }
+            }
+
+            dl{
+                @include position($t:50%, $l:300px);
+                transform: translateY(-50%);
+
+                dt{
+                    @include margin($d:bottom, $n:12px);
+                    @include font($s:20px, $lh:24px, $w:800);
+                }
+
+                dd{
+                    @include font($s:16px, $lh:24px, $c:$gray);
+                }
+            }
+        }
+    }
+}
+
+/* history */
+#historyWrap{
+    @include padding($d:top, $n:130px);
+    @include padding($d:bottom, $n:150px);
+    @include bg-color($c:$offwhite);
+
+    h3{
+        width:1100px;
+        margin:0 auto;
+        @include font($s:50px, $lh:56px, $w:800);
+    }
+    
+    article{
+        @include position($p:relative);
+        width:1100px;
+        margin:50px auto;
+
+        &:nth-child(even){
+            @include padding($d:left, $n:550px);
+
+            &:after{
+                @include position($t:50%, $l:0);
+                display:block;
+                content:"";
+                transform: translateY(-50%);
+            }
+        }
+
+        &:nth-child(odd){
+            @include padding($d:right, $n:550px);
+            
+            &:after{
+                @include position($t:50%, $r:0);
+                display:block;
+                content:"";
+                transform: translateY(-50%);
+            }
+        }
+
+        &:nth-child(2){
+            &:after{
+                width:422px;
+                height:228px;
+                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-424px, $y:-707px, $s:1683px auto);
+            }
+        }
+
+        &:nth-child(3){
+            &:after{
+                width:384px;
+                height:355px;
+                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:0px, $y:0px, $s:1683px auto);
+            }
+        }
+
+        &:nth-child(4){
+            &:after{
+                width:420px;
+                height:282px;
+                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:0px, $y:-707px, $s:1683px auto);
+            }
+        }
+
+        dl{
+            display:flex;
+            margin:12px 0;
+            letter-spacing:-1px;
+
+            &:after{
+                display:block;
+                content:"";
+                clear:both;
+            }
+
+            dt{
+                width:90px;
+                @include font($s:18px, $lh:28px, $w:800);
+            }
+
+            div{
+                @include font($s:14px, $lh:28px, $c:$darkgray);
+
+                dd{
+                    em{
+                        display:inline-block;
+                        width:38px;
+                        color:$black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* video list */
+#vdoLstWrap{
+    @include padding($d:top, $n:130px);
+    @include padding($d:bottom, $n:90px);
+    text-align:center;
+    @include bg-color($c:#151515);
+
+    h3{
+        @include hideTxt;
+
+        &:before{
+            display:block;
+            content:"";
+            clear:both;
+            width:230px;
+            height:50px;
+            margin:0 auto 5px;
+            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-768px, $y:-629px, $s:1683px auto);
+        }
+
+        &:after{
+            display:block;
+            content:"";
+            clear:both;
+            width:512px;
+            height:60px;
+            margin:0 auto 32px;
+            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-832px, $s:1683px auto);
+        }
+    }
+
+    .subTxt{
+        display:inline-block;
+        @include margin($d:bottom, $n:90px);
+
+        p{
+            float:left;
+            @include margin($d:right, $n:10px);
+            @include font($s:16px, $lh:24px, $c:$white);
+        }
+        
+        button{
+            float:left;
+            display:block;
+            @include padding($d:left, $n:2px);
+            @include padding($d:right, $n:2px);
+            @include font($s:12px, $lh:24px, $c:$gray);
+            @include border($d:bottom, $w:1px, $c:$gray); 
+        }
+    }
+
+    .subTit{
+        @include margin($d:bottom, $n:30px);
+        @include font($s:30px, $lh:34px, $a:center, $c:$white);
+    }
+
+    .vdoLst{
+        .slick-slide{
+            opacity: 0.3;
+            margin:0 32px;
+
+            &.slick-current{
+                opacity: 1;
+            }
+        }
+
+        .vdoLstCon{
+            display:block !important;
+            width:920px !important;
+            height:auto;
+            @include position($p:relative);
+            @include padding($d:bottom, $n:52px);
+
+            h5{
+                width:100%;
+                @include position($l:0, $b:0);
+                @include font($s:22px, $lh:26px, $a:center, $c:$white);
+            }
+
+            button{
+                width:193px;
+                height:185px;
+                @include hideTxt;
+                @include position($l:50%, $t:50%);
+                transform: translate(-50%,-50%);
+                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-762px, $y:-355px, $s:1683px auto);
+            }
+            
+            img{
+                width:100%;
+                height:auto;
+                border-radius: 10px;
+            }
+        }
+  
+        .slick-arrow{
+            width:58px;
+            height:58px;
+            @include hideTxt;
+
+            &.slick-prev {
+                @include position($t:243px, $r:50%);
+                @include margin($d:right, $n:490px);
+                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1035px, $y:-547px, $s:1683px auto);
+            }
+
+            &.slick-next {
+                @include position($t:243px, $l:50%);
+                @include margin($d:left, $n:490px);
+                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-617px, $y:-357px, $s:1683px auto);
+            }
+        }
+
+        .slick-dots{
+            display:inline-block;
+            @include margin($d:top, $n:50px);
+
+            &:after{
+                display:block;
+                content:"";
+                clear:both
+            }
+
+            li{
+                float:left;
+                @include margin($d:left, $n:4px);
+                @include margin($d:right, $n:4px);
+                @include hideTxt;
+
+                button{
+                    display:block;
+                    width:4px;
+                    height:4px;
+                    margin:0;
+                    padding:0;
+                    border-radius:5px;
+                    background:$gray;
+                    opacity:1;
+                }
+
+                &.slick-active{
+                    button{
+                        width:22px;
+                        height:4px;
+                        background:$white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* awards list */
+#awardsLstWrap{
+    @include padding($d:top, $n:105px);
+
+    .awardsTab{
+        width:100%;
+        @include border($d:bottom, $c:$sliver);
+
+        ul{
+            display:flex;
+            width:1100px;
+            margin:0 auto;
+
+            li{
+                height:70px;
+                @include margin($d:right, $n:40px);
+
+                &.on{
+                    @include border($d:bottom, $w:3px, $c:$black);
+                }
+
+                a{
+                    @include font($s:20px, $lh:70px, $c:$black);
+                }
+            }
+        }
+    }
+
+    section[id$="Wrap"]{
+        margin:50px auto 150px;
+
+        h4{
+            width:1100px;
+            margin:0 auto 35px;
+            @include font($s:50px, $lh:54px, $w:800, $c:$black);
+        }
+
+        .subTxt{
+            width:1100px;
+            margin:0 auto;
+            @include font($s:16px, $lh:20px, $c:$charcoal);
+        }
+
+        .btnWrap{
+            @include margin($d:top, $n:70px);
+            @include margin($d:bottom, $n:30px);
+
+            button{
+                @include position($p:relative);
+                display:inline-block;
+                @include padding($d:left, $n:30px);
+                @include padding($d:right, $n:50px);
+                height:54px;
+                border-radius:60px;
+                @include font($s:15px, $lh:42px, $c:$white);
+                @include bg-color($c:$black);
+                    
+                &:after{
+                    @include position($t:20px, $r:30px);
+                    display:block;
+                    content:"";
+                    width:12px;
+                    height:14px;
+                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-237px, $s:1683px auto);
+                }
+            }
+
+            p{
+                @include position($p:relative);
+                float:right;
+                @include padding($d:left, $n:15px);
+                @include font($s:12px, $lh:54px, $w:800, $c:$gray);
+
+                &:before {
+                    content:'';
+                    @include position($t:50%, $l:0);
+                    height: 4px;
+                    width: 6px;
+                    transform: translateY(-60%) rotate(-42deg);
+                    @include border($d:bottom, $w:2px, $c:$orange);
+                    @include border($d:left, $w:2px, $c:$orange);
+                }
+            }
+        }
+    }
+}
+
+/* artist list */
+#artistLstWrap{
+    width:1100px;
+    margin:0 auto;
+
+    .artistLst{
+        display:flex;
+        flex-wrap: wrap;
+        width:100%;
+    
+        .conBox{
+            @include position($p:relative);
+            width:50%;
+            @include margin($d:top, $n:30px);
+            @include margin($d:bottom, $n:30px);
+            
+            div{
+                @include position($t:50%, $l:145px);
+                width:calc(100% - 146px);
+                transform: translateY(-50%);
+    
+                h5{
+                    @include font($s:24px, $lh:28px, $w:800, $c:$black);
+                }
+    
+                dl{
+                    display:flex;
+                    @include margin($d:top, $n:12px);
+    
+                    dt{
+                        width:42px;
+                        height:22px;
+                        @include hideTxt;
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1628px, $y:-689px, $s:1683px auto);
+                    }
+    
+                    dd{
+                        @include margin($d:left, $n:7px);
+                        @include font($s:16px, $lh:20px, $c:$gray);
+                    }
+                }
+            }
+    
+            img{
+                width:125px;
+                height:125px;
+            }
+        }
+    }
+}
+
+/* music list */
+#musicLstWrap{
+    width:1100px;
+    margin:0 auto;
+
+    .musicLst{
+        display:flex;
+        flex-wrap: wrap;
+        width:100%;
+    
+        .conBox{
+            @include position($p:relative);
+            width:50%;
+            @include margin($d:top, $n:30px);
+            @include margin($d:bottom, $n:30px);
+            
+            div{
+                @include position($t:50%, $l:145px);
+                width:calc(100% - 146px);
+                transform: translateY(-50%);
+    
+                h5{
+                    @include font($s:24px, $lh:28px, $w:800, $c:$black);
+                }
+    
+    
+                p{
+                    @include margin($d:top, $n:15px);
+                    @include font($s:16px, $lh:20px, $c:$gray);
+                }
+                
+            }
+    
+            img{
+                width:125px;
+                height:125px;
+            }
+        }
+    }
+}
+
+/* record list */
+#recordLstWrap{
+    section[class^="recordLst"]{
+        @include position($p:relative);
+        display:flex;
+        justify-content:space-between;
+        width:1100px;
+        margin:100px auto 0;
+        @include margin($d:bottom, $n:100px);
+        @include padding($d:bottom, $n:104px);
+
+        > article{
+            width:calc(50% - 20px);
+
+            .tit{
+                display:flex;
+                justify-content:space-between;
+                @include margin($d:bottom, $n:20px);
+
+                h5{
+                    @include font($s:26px, $lh:30px, $w:800, $c:$black);
+                }
+
+                p{
+                    @include font($s:14px, $lh:22px, $c:$darkgray);
+                    align-self:flex-end;
+                }
+            }
+        }
+
+        .btn_more{
+            width:212px;
+            height:54px;
+            border-radius:30px;
+            @include border-all($c:$lightgray);
+            @include position($b:0, $l:50%);
+            transform:translateX(-50%);
+
+            span{
+                display:inline-block;
+                @include position($p:relative);
+                @include padding($d:right, $n:20px);
+
+                &:after{
+                    @include position($t:7px, $r:0);
+                    display:block;
+                    content:"";
+                    width:9px;
+                    height:5px;
+                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1674px, $y:-237px, $s:1683px auto);
+                }
+            }
+
+            &.on{
+                span{
+                    &:after{
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1671px, $y:-252px, $s:1683px auto);
+                    }
+                }
+            }
+        }
+
+        ol{
+            li{
+                display:flex;
+
+                &:not(.topClass){
+                    height:64px;
+                    @include padding($d:top, $n:20px);
+                    @include padding($d:bottom, $n:20px);
+                    @include border($d:bottom, $c:$sliver);
+                }
+
+                .rank{
+                    @include font($s:18px, $lh:22px, $w:800, $a:center, $c:$charcoal);
+                }
+
+                em{
+                    @include font($s:16px, $lh:22px, $c:$gray);
+
+                    &.title{
+                        @include font($s:16px, $lh:22px, $c:$charcoal);
+                    }
+                }
+
+                &.topClass{
+                    @include position($p:relative);
+                    width:530px;
+                    height:160px;
+
+                    .rank{
+                        width:100px;
+                        @include font($s:36px, $lh:160px, $w:800, $a:center, $c:$white);
+                    }
+
+                    .img{
+                        width:100px;
+                        height:100px;
+                        @include margin($d:top, $n:30px);
+                    }
+
+                    div{
+                        @include position($t:50%, $l:220px);
+                        transform: translateY(-50%);
+
+                        em{
+                            display:block;
+                            @include margin($d:top, $n:7px);
+                            @include margin($d:bottom, $n:7px);
+                            @include font($s:16px, $lh:20px, $c:rgba(255,255,255,0.6));
+                        }
+
+                        .title{
+                            @include font($s:22px, $lh:26px, $w:800, $c:$white);
+                        }
+                    }
+
+                    &:not(:first-child){
+                        @include margin($d:top, $n:10px);
+                    }
+
+                    &:nth-child(3){
+                        @include margin($d:bottom, $n:5px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.recordLstTop{
+    > article{
+        ol{
+            li{
+                &:not(.topClass){
+                    .rank{
+                        width:40px;
+                        @include margin($d:right, $n:20px);
+                    }
+
+                    .title{
+                        @include ellipsis($w:215px);
+                        @include margin($d:right, $n:45px);
+                    }
+
+                    .artist{
+                        @include ellipsis($w:130px);
+                        @include margin($d:right, $n:10px);
+                    }
+
+                    em:last-child{
+                        width:70px;
+                        @include padding($d:right, $n:10px);
+                        text-align:right !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .megahit{
+        ol{
+            li{
+                &.topClass{
+                    &:nth-child(1){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1140px, $y:-2086px, $s:auto);
+                    }
+            
+                    &:nth-child(2){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-1042px, $s:auto);
+                    }
+            
+                    &:nth-child(3){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1536px, $y:-1094px, $s:auto);
+                    }
+                }
+            }
+        }
+    }
+    
+    .steadyseller{
+        ol{
+            li{
+                &.topClass{
+                    &:nth-child(1){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1140px, $y:-2086px, $s:auto);
+                    }
+            
+                    &:nth-child(2){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-714px, $s:auto);
+                    }
+            
+                    &:nth-child(3){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1536px, $y:-1094px, $s:auto);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.recordLstBtm{
+    .topArtist{
+        ol{
+            li{
+                &:not(.topClass){
+                    .rank{
+                        width:40px;
+                        @include margin($d:right, $n:20px);
+                    }
+
+                    .title{
+                        @include ellipsis($w:391px);
+                        @include margin($d:right, $n:10px);
+                    }
+
+                    em:last-child{
+                        width:70px;
+                        @include padding($d:right, $n:10px);
+                        text-align:right !important;
+                    }
+                }
+
+                &.topClass{
+                    &:nth-child(1){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-72px, $y:-2086px, $s:auto);
+                    }
+            
+                    &:nth-child(2){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-1206px, $s:auto);
+                    }
+            
+                    &:nth-child(3){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-2209px, $y:-2086px, $s:auto);
+                    }
+                }
+            }
+        }
+    }
+
+    .mostLike{
+        ol{
+            li{
+                &:not(.topClass){
+                    .rank{
+                        width:40px;
+                        @include margin($d:right, $n:20px);
+                    }
+
+                    .title{
+                        @include ellipsis($w:295px);
+                        
+                        @include margin($d:right, $n:45px);
+                    }
+
+                    .artist{
+                        @include ellipsis($w:130px);
+                        @include padding($d:right, $n:5px);
+                    }
+                }
+
+                &.topClass{
+                    &:nth-child(1){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-878px, $s:auto);
+                    }
+            
+                    &:nth-child(2){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1674px, $y:-2086px, $s:auto);
+                    }
+            
+                    &:nth-child(3){
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-607px, $y:-2086px, $s:auto);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* genre best */
+.genreBest{
+    @include padding($d:top, $n:95px);
+    @include padding($d:bottom, $n:95px);
+    @include bg-color($c:$offwhite);
+
+    h5{
+        width:1100px;
+        margin:0 auto;
+        @include font($s:26px, $lh:30px, $w:800, $c:$black);
+    }
+
+    .tab{
+        display:flex;
+        justify-content:space-between;
+        width:1100px;
+        margin:40px auto 0;
+
+        ol{
+            display:flex;
+
+            li{
+                @include padding($d:left, $n:26px);
+                @include padding($d:right, $n:26px);
+                @include font($s:16px, $lh:54px, $c:$black);
+                cursor:pointer;
+                
+                &.on{
+                    color:$white;
+                    @include bg-color($c:$black);
+                    border-radius:50px;
+                }
+
+                em{
+                    font-weight:800;
+                }
+            }
+        }
+
+        p{
+            @include font($s:14px, $lh:54px, $c:$darkgray);
+        }
+    }
+
+    article[class$=Graph]{
+        
+        width:1100px;
+        margin:55px auto 0;
+
+        p{
+            @include font($s:22px, $lh:26px, $c:$charcoal);
+            @include margin($d:bottom, $n:36px);
+
+            em{
+                font-weight:800;
+            }
+        }
+
+        .graph{
+            @include position($p:relative);
+        }
+
+        ul{ 
+            @include position($t:-20px, $l:0);
+            width:100%;
+            height:524px;
+
+            li{
+                display:flex;
+                align-items:center;
+                @include margin($d:top, $n:20px);
+                @include font($s:12px, $lh:12px, $c:$charcoal);
+
+                em{
+                    width:108px;
+                }
+
+                .bar{
+                    display:block;
+                    height:10px;
+                    border-radius:0 10px 10px 0;
+                    text-indent:-9999px;
+                    @include bg-color($c:$sliver);
+                }
+
+                &.worst{
+                    .bar{
+                        @include position($p:relative);
+                        @include bg-color($c:#aaa);
+
+                        &:after{
+                            @include position($t:0, $r:0);
+                            display:block;
+                            content:"";
+                            width:200px;
+                            height:10px;
+                            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1436px, $y:-946px, $s:1683px auto)
+                        }
+
+                        &:before{
+                            @include position($t:-75px, $r:-10px);
+                            display:block;
+                            content:"";
+                            width:65px;
+                            height:69px;
+                            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-955px, $y:-456px, $s:1683px auto);
+                        }
+                    }
+                }
+
+                &.best{
+                    .bar{
+                        @include position($p:relative);
+                        @include bg-color($c:$orange);
+
+                        &:after{
+                            @include position($t:0, $r:0);
+                            display:block;
+                            content:"";
+                            width:300px;
+                            height:10px;
+                            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-946px, $s:1683px auto)
+                        }
+
+                        &:before{
+                            @include position($t:-75px, $r:-10px);
+                            display:block;
+                            content:"";
+                            width:65px;
+                            height:69px;
+                            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1022px, $y:-456px, $s:1683px auto)
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+
+        .bg{
+            display:flex;
+            width: calc(100% + 17px);
+            height: 564px;
+            @include margin($d:left, $n:46px);
+
+            span{
+                width:12%;
+                @include font($s:12px, $lh:16px, $a:center, $c:$darkgray);
+
+                &:before{
+                    display:block;
+                    content:"";
+                    width:1px;
+                    height:calc(100% - 40px);
+                    margin:0 auto;
+                    background:#eee;
+                    margin-bottom:30px;
+                }
+            }
+        }
+    }
+
+    .popGraph{
+        $pop: 89, 92, 92, 84, 82, 91, 90, 91, 100, 92, 90, 91, 77, 76, 75, 75, 95;
+
+        ul{ 
+            @for $i from 1 through length($pop){
+                li:nth-child(#{$i}){
+                    .bar{
+                        @include percent($n:nth($pop, $i));
+                    }
+                }
+            }
+        }
+    }
+
+    .hiphopGraph{
+        $hiphop: 79, 84, 77, 89, 100, 69, 85, 82, 64, 73, 86, 70, 49, 50, 43, 43, 30;
+
+        ul{ 
+            @for $i from 1 through length($hiphop){
+                li:nth-child(#{$i}){
+                    .bar{
+                        @include percent($n:nth($hiphop, $i));
+                    }
+                }
+            }
+        }
+    }
+
+    .rnbGraph{
+        $rnb: 75, 79, 86, 88, 100, 75, 78, 68, 49, 79, 55, 54, 49, 86, 62, 62, 60;
+
+        ul{ 
+            @for $i from 1 through length($rnb){
+                li:nth-child(#{$i}){
+                    .bar{
+                        @include percent($n:nth($rnb, $i));
+                    }
+                }
+            }
+        }
+    }
+
+    .ostGraph{
+        $ost: 82, 67, 68, 89, 72, 95, 58, 62, 69, 72, 71, 51, 80, 100, 79, 94, 95;
+
+        ul{ 
+            @for $i from 1 through length($ost){
+                li:nth-child(#{$i}){
+                    .bar{
+                        @include percent($n:nth($ost, $i));
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* nation best */
+.nationBest{
+    width:1100px;
+    margin:0 auto;
+    @include padding($d:top, $n:95px);
+
+    .tit{
+        display:flex;
+        justify-content:space-between;
+        @include margin($d:bottom, $n:20px);
+
+        h5{
+            @include font($s:26px, $lh:30px, $w:800, $c:$black);
+        }
+
+        p{
+            @include font($s:14px, $lh:22px, $c:$darkgray);
+            align-self:flex-end;
+        }
+    }
+
+    ol{
+        @include position($p:relative);
+        @include padding($d:top, $n:10px);
+
+        &:after{
+            @include position($t:0, $r:270px);
+            display:block;
+            content:"";
+            width:34px;
+            height:631px;
+            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:0px, $y:-1043px, $s:1683px auto);
+        }
+
+        li{
+            display:flex;
+            @include margin($d:top, $n:30px);
+
+            .nation{
+                width:142px;
+                @include font($s:22px, $lh:50px);
+
+                em{
+                    display:inline-block;
+                    width:40px;
+                    font-weight:bold;
+                }
+            }
+
+            .percent{
+                display:block;
+                height:50px;
+                @include font($s:18px, $lh:50px, $c:$darkgray);
+            }
+
+            &.topClass{
+                .percent{
+                    @include font($s:22px, $lh:50px, $w:800, $a:right, $c:$white);
+                    text-indent:12px;
+                    direction:rtl;
+                }
+            }
+
+            // 탑3
+            $top3: korea, america, japan;
+            $top_w: 957, 494, 180;
+            $top_x: 11, 1125, 859;
+            $top_y: 991, 893, 707;
+
+            @for $i from 1 through length($top3){
+                &.topClass:nth-child(#{$i}){
+                    .percent{
+                        width:#{nth($top_w, $i)}px;
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-#{nth($top_x, $i)}px, $y:-#{nth($top_y, $i)}px, $s:1683px auto);
+                    }
+                }
+            }
+        
+            // 그 외
+            $etc: uk, france, germany, thailand;
+            $etc_w: 168, 98, 98, 78;
+            $etc_x: 858, 965, 965, 1010;
+            $etc_y: 758, 404, 352, 629;
+            
+            @for $i from 1 through length($etc){
+                &:nth-child(#{$i + 3}){
+                    .percent{
+                        width:#{nth($etc_w, $i)}px;
+                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-#{nth($etc_x, $i)}px, $y:-#{nth($etc_y, $i)}px, $s:1683px auto);
+                        text-indent:#{nth($etc_w, $i) + 15}px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* event */
+#eventWrap{
+    @include padding($d:top, $n:130px);
+    @include padding($d:bottom, $n:120px);
+    @include bg-img($url:"/images/bg/bg_event.jpg", $x:50%, $y:0, $c:#151515);
+
+    h3{
+        width:416px;
+        height:141px;
+        margin:0 auto 20px;
+        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-689px, $s:1683px auto);
+        @include hideTxt;
+    }
+
+    p{
+        @include margin($d:bottom, $n:40px);
+        @include font($s:16px, $lh:28px, $a:center, $c:$white);
+    }
+
+    form{
+        @include position($p:relative);
+        display:flex;
+        width:545px;
+        height:58px;
+        margin:0 auto;
+        border-radius:50px;
+        @include bg-color($c:$white);
+        overflow:hidden;
+
+        input{
+            &[type="text"]{
+                width:calc(100% - 75px);
+                @include font($s:16px, $lh:58px, $c:$charcoal);
+                text-indent:20px;
+
+                &::placeholder {
+                    color: $charcoal;
+                }
+            }
+
+            &[type="submit"]{
+                width:75px; 
+                @include hideTxt;
+                @include bg-color($c:$white);
+                cursor:pointer;
+            }
+        }
+
+        &:after{
+            @include position($b:18px, $r:26px);
+            display:block;
+            content:"";
+            width:22px;
+            height:22px;
+            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-143px, $s:1683px auto);
+        }
+    }
+
+    .onePick{
+        @include position($p:relative);
+        height:348px;
+        @include margin($d:top, $n:100px);
+        @include margin($d:bottom, $n:100px);
+
+        &:before{
+            @include position($t:0, $l:50%, $z:2);
+            display:block;
+            content:"";
+            width: 348px;
+            height: 348px;
+            transform:translateX(-50%);
+            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:0, $y:-357px, $s:1683px auto);
+        }
+
+        .blur{
+            @include position($t:0, $l:50%);
+            width: 348px;
+            height: 348px;
+            @include bg-color($c:#151515);
+            transform:translateX(-50%);
+            overflow:hidden;
+
+            div{
+                height:348px;
+                @include bg-img($url:"/images/txt/txt_event_onepickBlur.png", $x:0, $y:50%, $r:repeat-x, $s:auto 108px);
+                filter: blur(20px);
+            }
+        }
+
+        .bg{
+            height:348px;
+            @include bg-img($url:"/images/txt/txt_event_onepick.png", $x:0, $y:50%, $r:repeat-x, $s:auto 108px);
+            @include hideTxt;
+        }
+    }
+
+    .notice{
+        width:1100px;
+        margin:0 auto;
+        @include padding($d:top, $n:360px);
+        @include bg-img($url:"/images/bg/img_event_guide.png", $x:50%, $y:0, $s:1100px auto);
+
+        h4{
+            width:950px;
+            @include margin($d:left, $n:50px);
+            @include font($s:22px, $lh:30px, $w:800, $c:$white);
+        }
+
+        ul{
+            width:950px;
+            @include margin($d:top, $n:30px);
+            @include margin($d:left, $n:50px);
+
+            li{
+                @include margin($d:bottom, $n:10px);
+                @include font($s:14px, $lh:22px, $c:$darkgray);
+                
+                &:before{
+                    display:block;
+                    content:"";
+                    float:left;
+                    width:2px;
+                    height:2px;
+                    @include margin($d:top, $n:11px);
+                    @include bg-color($c:$darkgray);
+                }
+
+                &:after{
+                    display:block;
+                    content:"";
+                    clear:both;
+                }
+
+                span{
+                    float:right;
+                    width:calc(100% - 12px);
+                }
+            }
+        }
+    }
+}
+
+/* vip event */
+#vipEventWrap{
+    @include position($p:relative);
+    @include padding($d:top, $n:130px);
+    @include padding($d:bottom, $n:120px);
+    @include bg-color($c:#151515);
+
+    h3{
+        width:567px;
+        height:141px;
+        margin:0 auto 20px;
+        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:0, $s:1683px auto);
+        @include hideTxt;
+    }
+
+    p:not(.gift){
+        @include margin($d:bottom, $n:80px);
+        @include font($s:16px, $lh:28px, $a:center, $c:$white);
+    }
+
+    .gift{
+        height:788px;
+        margin:0 auto;
+        text-align:center;
+        @include bg-img($url:"/images/bg/img_vipEventGift.jpg", $x:50%, $y:0, $s:1100px auto);
+
+        em{
+            display:inline-block;
+            @include font($s:24px, $lh:28px, $c:$white);
+            @include padding($d:bottom, $n:5px);
+            @include border($d:bottom, $c:$white);
+        }
+    }
+
+    .btn_vipEvent{
+        @include position($p:relative, $z:20);
+        width:286px;
+        height:68px;
+        border-radius:60px;
+        text-align:center;
+        margin:0 auto;
+        @include bg-color($c:$pink);
+
+        span{
+            display:inline-block;
+            @include font($s:18px, $lh:66px, $c:$white);
+
+            &:after{
+                display:inline-block;
+                content:"";
+                width:9px;
+                height:16px;
+                @include margin($d:left, $n:7px);
+                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-252px, $s:1683px auto);
+            }
+        }
+    }
+
+    .notice{
+        width:880px;
+        margin:0 auto;
+        padding: 75px 0 0 220px;
+        h4{
+            @include font($s:22px, $lh:30px, $w:800, $c:$white);
+        }
+
+        ul{
+            @include margin($d:top, $n:30px);
+
+            li{
+                @include margin($d:bottom, $n:5px);
+                @include font($s:14px, $lh:22px, $c:$darkgray);
+                
+                &:before{
+                    display:block;
+                    content:"";
+                    float:left;
+                    width:2px;
+                    height:2px;
+                    @include margin($d:top, $n:11px);
+                    @include bg-color($c:$darkgray);
+                }
+
+                &:after{
+                    display:block;
+                    content:"";
+                    clear:both;
+                }
+
+                span{
+                    float:right;
+                    width:calc(100% - 12px);
+                }
+            }
+        }
+    }
+}

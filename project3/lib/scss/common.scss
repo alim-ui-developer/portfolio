@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+/* font */
+.nanumbarungothic{font-family:"나눔바른고딕",'NanumBarunGothic', sans-serif;}
+.notosans_kr{font-family:'Noto Sans KR', sans-serif;}
+
+/* text align */
+.ta{
+    &_left{
+        text-align:left !important;
+        th{text-align:left !important}
+        td{ text-align:left !important}
+    }
+
+    &_center{
+        text-align:center !important;
+        th{text-align:center !important}
+        td{text-align:center !important}
+    }
+
+    &_right{
+        text-align:right !important;
+        th{text-align:right !important}
+        td{text-align:right !important}
+    }
+}
+
+/* font-weight */
+.fw{
+    &_normal{font-weight:normal !important}
+    &_bold{font-weight:bold !important}
+}
+
+/* float */
+.fl{float:left}
+.fr{float:right}
+.fn{float:none !important}
+.clear:after{display:block;content:"";clear:both}
+
+
+// display
+@mixin display(
+    $d: block
+){
+    display:$d !important
+}
+
+/* table */
+.tl_fix{table-layout:fixed}
+.va{
+    &_top{vertical-align:top !important}
+    &_mdl{vertical-align:middle !important}
+    &_btm{vertical-align:bottom !important}
+}
+
+
+/* border */
+.b_none{border:none !important}
+
+
+/* overflow */
+.o_hidden{overflow:hidden !important}
+.o_auto{overflow:auto !important}
+.o_scroll{overflow:scroll !important}
+.y_scroll{overflow-y:scroll !important}
+.x_scroll{overflow-x:scroll !important}
+
+/* cursor */
+.c{
+    &_default{cursor:default}
+    &_pointer{cursor:pointer}
+}
+
+/* etc */
+.screen_out{position:absolute;left:-9999px;width:0;height:0;font-size:0;line-height:0;text-indent:-9999px}

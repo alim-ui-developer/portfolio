@@ -1,0 +1,112 @@
+// color
+$pink:#ff2972;
+$orange:#ff440b;
+$white:#fff;
+$offwhite:#f7f7f7;
+$lightgray:#c9c9c9;
+$sliver:#d9d9d9;
+$gray:#707070;
+$darkgray:#898989;
+$charcoal:#313131;
+$black:#000;
+
+// position
+@mixin position( $p:absolute, $t:null, $b:null, $l:null, $r:null, $z:1){
+  position: $p;
+  top: $t;
+  bottom: $b;
+  left: $l;
+  right: $r;
+  z-index:$z;
+}
+
+// border
+@mixin border-all(
+    $w:1px,
+    $c:null
+){
+    border:$w solid $c;
+    box-sizing:border-box
+}
+
+@mixin border(
+    $d:null,
+    $w:1px,
+    $c:null
+){
+    border-#{$d}: $w solid $c;
+    box-sizing:border-box;
+}
+
+// padding
+@mixin padding($d, $n){
+    padding-#{$d}:$n;
+    box-sizing:border-box;
+}
+
+// margin
+@mixin margin($d, $n){
+    margin-#{$d}:$n
+}
+
+// font
+@mixin font($s, $lh, $w:400, $a:left, $c:$black){
+    font-size:$s;
+    line-height:$lh;
+    font-weight:$w;
+    text-align:$a;
+    color:$c;
+}
+
+// blur
+@mixin blur($n:none){
+    filter: blur($n); 
+    -webkit-filter: blur($n); 
+    -moz-filter: blur($n);
+    -o-filter: blur($n);
+    -ms-filter: blur($n);
+}
+
+// background
+@mixin bg-img($url:null, $x:null, $y:null, $r:no-repeat, $c:null, $s:100% auto){
+    background-image:url($url);
+    background-position:$x $y;
+    background-repeat:$r;
+    background-size:$s;
+    background-color:$c;
+}
+
+@mixin bg-color($c){
+    background-color:$c;
+}
+
+// hide text
+@mixin hideTxt{
+    font-size:1px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+// ellipsis
+@mixin ellipsis($w){
+    width:$w;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+// button
+@mixin btn($w:null, $h:null, $s:null, $lh:null, $a:center, $c:null, $br:null, $bg:null){
+    width:$w;
+    height:$h;
+    @include font($s:$s, $lh:$lh, $a:$a, $c:$c);
+    border-radius:$br;
+    background:$bg;
+    cursor:pointer;
+}
+
+// percent
+@mixin percent($n){
+    width:calc(#{$n}% - 108px);
+}
