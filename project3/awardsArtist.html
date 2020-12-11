@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script type="text/javascript" src="lib/js/slick.js"></script>
+    <script type="text/javascript" src="lib/js/motion.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/font.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/style.css" />
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <title>벅스의 스무살 - 벅스</title>
+    <script>
+    $(document).ready(function(){
+        $("header").load("include/header.html");
+        $("#visualWrap").load("include/visual.html",function(){
+            $(this).find(".gnbWrap").find("li").eq(1).addClass("on");
+        });
+        $("#vdoLstWrap").load("include/videoLst.html");
+        $(".awardsTab").load("include/awardsTab.html",function(){
+            $(this).find("li").eq(0).addClass("on");
+        });
+        $("footer").load("include/footer.html");
+     });
+    </script>
+</head>
+<body>
+<!-- header -->
+<header class="clear">
+    <!-- include/header.html -->
+</header>
+<!--// header -->
+<!-- visual -->
+<section id="visualWrap">
+    <!-- include/visual.html -->
+</section>
+<!-- visual -->
+<!-- video list -->
+<section id="vdoLstWrap">
+    <!-- include/videoLst.html -->
+</section>
+<!--// video list -->
+<!-- awards list -->
+<section id="awardsLstWrap">
+    <!-- tab menu -->
+    <nav class="awardsTab">
+        <!-- include/awardsTab.html -->
+    </nav>
+    <!--// tab menu -->
+    <!-- top artist list -->
+    <section id="artistLstWrap">
+        <h4>가장 사랑받은 아티스트 20</h4>
+        <p class="subTxt">지난 20년간 청취횟수, 내앨범 담기 등 이용이력을 바탕으로 벅스 가족에게 가장 사랑받은 아티스트를 선정했습니다.</p>
+        <div class="btnWrap clear">
+            <button>대표곡 전체듣기</button>
+            <p>가나다abc순 / 벅스 표기 기준</p>
+        </div>
+        <section class="artistLst">
+            <article class="conBox">
+                <div>
+                    <h5>김종국</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>어제보다 오늘 더</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_kimJongguk.png" alt="김종국 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>다비치</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>사랑과 전쟁 (Narr. 하하)</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_Davichi.png" alt="다비치 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>바이브</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>그남자 그여자 (feat. 장혜진)</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_vibe.png" alt="바이브 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>방탄소년단</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>봄날</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_bts.png" alt="방탄소년단 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>백지영</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>총맞은 것처럼</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_BaekZYoung.png" alt="백지영 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>버즈(Buzz)</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>사랑하지 않은 것처럼</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_Buzz.png" alt="버즈 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>볼빨간사춘기</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>우주를 줄게</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_bol4.png" alt="볼빨간 사춘기 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>소녀시대(GIRLS' GENERATION)</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>Gee</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_girlsgeneration.png" alt="소녀시대 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>싸이(PSY)</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>New Face</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_psy.png" alt="싸이 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>아이유(IU)</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>밤편지</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_IU.png" alt="아이유 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>엠씨더맥스(M.C THE MAX)</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>어디에도</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_mcthemax.png" alt="엠씨더맥스 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>이승기</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>되돌리다</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_leeseunggi.png" alt="이승기 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>임창정</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>내가 저지른 사랑</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_imChangJung.png" alt="임창정 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>케이윌</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>Love Blossom (러브블러썸)</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_kwill.png" alt="케이윌 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>코요태</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>순정</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_Koyote.png" alt="코요태 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>태연(TAEYEON)</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>11:11</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_taeyeon.png" alt="태연 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>휘성(Realslow)</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>가슴 시린 이야기 (feat. 용준형 Of Beast)</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_Realslow.png" alt="휘성 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>BIGBANG</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>에라 모르겠다</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_BIGBANG.png" alt="빅뱅 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>Red Velvet(레드벨벳)</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>빨간 맛(Red Flavor)</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_RedVelvet.png" alt="레드벨벳 프로필 사진" />
+            </article>
+            <article class="conBox">
+                <div>
+                    <h5>TWICE(트와이스)</h5>
+                    <dl>
+                        <dt>대표곡</dt>
+                        <dd>CHEER UP</dd>
+                    </dl>
+                </div>
+                <img src="images/img/img_TWICE.png" alt="트와이스 프로필 사진" />
+            </article>
+        </section>
+    </section>
+    <!--// top artist list -->
+</section>
+<!-- awards list -->
+<!-- footer -->
+<footer>
+    <!-- include/footer.html -->
+</footer>
+<!--// footer -->
+</body>
+</html>

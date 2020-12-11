@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/* font */
+.nanumbarungothic { font-family: "나눔바른고딕",'NanumBarunGothic', sans-serif; }
+
+.notosans_kr { font-family: 'Noto Sans KR', sans-serif; }
+
+/* text align */
+.ta_left { text-align: left !important; }
+
+.ta_left th { text-align: left !important; }
+
+.ta_left td { text-align: left !important; }
+
+.ta_center { text-align: center !important; }
+
+.ta_center th { text-align: center !important; }
+
+.ta_center td { text-align: center !important; }
+
+.ta_right { text-align: right !important; }
+
+.ta_right th { text-align: right !important; }
+
+.ta_right td { text-align: right !important; }
+
+/* font-weight */
+.fw_normal { font-weight: normal !important; }
+
+.fw_bold { font-weight: bold !important; }
+
+/* float */
+.fl { float: left; }
+
+.fr { float: right; }
+
+.fn { float: none !important; }
+
+.clear:after { display: block; content: ""; clear: both; }
+
+/* table */
+.tl_fix { table-layout: fixed; }
+
+.va_top { vertical-align: top !important; }
+
+.va_mdl { vertical-align: middle !important; }
+
+.va_btm { vertical-align: bottom !important; }
+
+/* border */
+.b_none { border: none !important; }
+
+/* overflow */
+.o_hidden { overflow: hidden !important; }
+
+.o_auto { overflow: auto !important; }
+
+.o_scroll { overflow: scroll !important; }
+
+.y_scroll { overflow-y: scroll !important; }
+
+.x_scroll { overflow-x: scroll !important; }
+
+/* cursor */
+.c_default { cursor: default; }
+
+.c_pointer { cursor: pointer; }
+
+/* etc */
+.screen_out { position: absolute; left: -9999px; width: 0; height: 0; font-size: 0; line-height: 0; text-indent: -9999px; }
