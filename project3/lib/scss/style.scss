@@ -1,5 +1,6 @@
 @import "common.scss";
 @import "mixin.scss";
+@import "keyframes.scss";
 
 /* header */
 header{
@@ -25,7 +26,7 @@ header{
             content:"";
             width:14px;
             height:14px;
-            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-189px, $s:1683px auto);
+            @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-189px, $s:1683px auto);
         }
     }
 }
@@ -35,13 +36,14 @@ header{
     @include position($p:relative);
     width:100%;
     height:750px;
-    @include bg-img($url:"/images/bg/bg_20thAnniversary.gif", $x:50%, $y:50%, $s:cover);
+    @include bg-img($url:"../../images/bg/bg_20thAnniversary.gif", $x:50%, $y:50%, $s:cover);
 
     h2{
-        width:1140px;
+        width:1045px;
         height:auto;
         margin:0 auto;
         padding-top:194px;
+        animation: fadeInUp 1s ease-out 1;
 
         img{
             width:100%;
@@ -118,7 +120,7 @@ footer{
         @include position($p:fixed,$b:35px,$r:70px);
         width:56px;
         height:56px;
-        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1627px, $y:-832px, $s:1683px auto);
+        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1627px, $y:-832px, $s:1683px auto);
         @include hideTxt;
     }
 }
@@ -135,28 +137,47 @@ footer{
         content:"";
         width:5157px;
         height:570px;
-        @include bg-img($url:"/images/bg/bg_recordArtist20201109.jpg", $x:0, $y:0, $r:no-repeat);
+        @include bg-img($url:"../../images/bg/bg_recordArtist20201109.jpg", $x:0, $y:0, $r:no-repeat);
         animation:timelineBg linear 100s infinite;
     }
 
-    @keyframes timelineBg{
-        0%{
-            transform: translateX(0);
-        }
-        100%{
-            transform: translateX(-50%);
-        }
-    }
-
     .subTit{
-        @include font($s:50px, $lh:54px, $w:700, $a:center);
+        @include font($s:50px, $lh:54px, $w:800, $a:center);
+        animation: fadeInUp 1s ease-out 1;
     }
 
     .time{
+        @include margin($d:top, $n:35px);
         @include font($s:42px, $lh:94px, $w:800, $a:center);
 
-        em{
-            @include font($s:90px, $lh:94px);
+        span{
+            display:inline-block;
+            text-align:left;
+            opacity:0;
+            transform:translate(0, 50px);
+
+            $time: year, day, minute;
+            $time_w: 155, 285, 495;
+            $time_t: 500, 700, 900;
+            $time_o: 800, 1000, 1200;
+
+            @for $i from 1 through length($time){
+                &.#{nth($time, $i)}{
+                    width:#{nth($time_w, $i)}px;
+                    transition:transform 800ms ease-in-out #{nth($time_t, $i)}ms, opacity 800ms linear #{nth($time_o, $i)}ms;
+                }
+            }
+
+            em{
+                @include font($s:90px, $lh:94px, $w:800);
+            }
+        }
+
+        &.active{
+            span{
+                opacity:1;
+                transform:translate(0, 0);
+            }
         }
     }
 
@@ -165,12 +186,12 @@ footer{
         margin:0 auto;
         @include position($p:relative, $t:0, $l:0, $z:1);
 
-       &:before {
+        &:before {
             content:"";
             @include position($t:0, $r:0, $b:0, $l:0, $z:-1);
             @include bg-color($c:rgba(255,255,255,0.7));
             @include blur($n:15px);
-       };
+        };
 
         li{
             @include position($p:relative);
@@ -182,6 +203,14 @@ footer{
             @include border($d:top, $c:$sliver);
             @include font($s:14px, $lh:24px, $c:$darkgray);
             letter-spacing:-1px;
+            opacity:0;      
+            transform:translate(0, 50px);
+
+            @for $i from 1 through 21{
+               &:nth-child(#{$i}){
+                    transition:transform 800ms ease-in-out #{1000+(100*$i)}ms, opacity 800ms linear #{1200+(100*$i)}ms;
+                }
+            }
 
             &:before{
                 @include position($t:-3px);
@@ -199,11 +228,55 @@ footer{
                 @include font($s:18px, $lh:22px, $w:800);
             }
         }
+
+        &.active{
+            li{
+                opacity:1;
+                transform:translate(0, 0);
+            }
+        }
     }
 
     .btn_hitsong{
-        @include btn($w:316px, $h:68px, $s:18px, $lh:68px, $a:center, $c:$white, $br:60px, $bg:$black);
+        @include position($p:relative, $z:1);
+        @include btn($w:316px, $h:68px, $s:18px, $lh:68px, $a:center, $c:$white, $br:60px, $bg:transparent);
         margin:60px auto 0;
+        opacity:0;    
+        transform:translate(0, 50px);
+        transition:transform 1s ease-in-out 3200ms, opacity 1s linear 3500ms;
+        overflow: hidden;
+
+        &.active{
+            opacity:1;
+            transform: translate(0, 0);
+        }
+
+        &:after{
+            content:"";
+            @include position($b:0, $l:0, $z:-2);
+            width:100%;
+            height:100%;
+            @include bg-color($c:$black);
+            border-radius:60px;
+        }
+
+        &:before {
+            content:"";
+            @include position($b:0, $l:0, $z:-1);
+            width:0%;
+            height:100%;
+            background:linear-gradient(90deg, $pink, $orange);
+            transition:all 300ms;
+            border-radius:60px;
+        }
+
+        &:hover{
+            &:before {
+                width: 100%;
+            }
+        }
+
+
     }
 }
 
@@ -222,6 +295,14 @@ footer{
     p{
         width:50%;
         @include font($s:32px, $lh:44px, $w:800, $a:center);
+        opacity:0;
+        transform:translate(0, 50px);
+
+        @for $i from 1 through 2{
+            &:nth-child(#{$i+1}){
+                transition:transform 800ms ease-in-out #{500+(200*$i)}ms, opacity 800ms linear #{800+(200*$i)}ms;
+            }
+        }
 
         span{
             display:block;
@@ -230,6 +311,11 @@ footer{
             em{
                 @include padding($d:right, $n:5px);
                 @include font($s:64px, $lh:66px, $w:800);
+
+                &:after{
+                    content:"+";
+                    @include padding($d:right, $n:3px);
+                }
             }
 
             &:before{
@@ -244,7 +330,7 @@ footer{
                 &:before{
                     width:302px;
                     height:350px;
-                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-768px, $y:0, $s:1683px auto);
+                    @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-768px, $y:0, $s:1683px auto);
                 }
             }
         }
@@ -254,9 +340,16 @@ footer{
                 &:before{
                     width:356px;
                     height:350px;
-                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-400px, $y:0, $s:1683px auto);
+                    @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-400px, $y:0, $s:1683px auto);
                 }
             }
+        }
+    }
+
+    &.active{
+        p{
+            opacity:1;
+            transform:translate(0, 0);
         }
     }
 }
@@ -265,10 +358,13 @@ footer{
 #toneWrap{
     @include padding($d:top, $n:130px);
     @include padding($d:bottom, $n:270px);
-    @include bg-img($url:"/images/bg/bg_recordSoundQuality.jpg", $x:50%, $y:0, $s:cover);
+    @include bg-img($url:"../../images/bg/bg_recordSoundQuality.jpg", $x:50%, $y:0, $s:cover);
 
     h3{
         @include font($s:50px, $lh:56px, $w:800, $a:center, $c:$white);
+        opacity:0;
+        transform:translate(0, 50px);
+        transition:transform 1s ease-out, opacity 800ms linear 500ms;
     }
 
     ul{
@@ -281,27 +377,34 @@ footer{
             margin:0 20px;
             @include padding($d:top, $n:235px);
             @include font($s:18px, $lh:22px, $a:center, $c:$orange);
+            opacity:0;
+            transform:translate(0, 50px);
+            
+            @for $i from 1 through 4{
+                &:nth-child(#{$i}){
+                    @include bg-img($url:"../../images/img/img_soundQuality#{$i}.jpg", $x:0, $y:0, $s:100% auto);
+                    transition:transform 800ms ease-in-out #{300+(200*$i)}ms, opacity 800ms linear #{600+(200*$i)}ms;
+                }
+            }
 
             em{
                 display:block;
                 @include margin($d:top, $n:8px);
                 @include font($s:22px, $lh:26px, $w:800, $a:center, $c:$white);
             }
+        }
+    }
 
-            &:nth-child(1){
-                @include bg-img($url:"/images/img/img_soundQuality1.jpg", $x:0, $y:0, $s:100% auto);
-            }
-            
-            &:nth-child(2){
-                @include bg-img($url:"/images/img/img_soundQuality2.jpg", $x:0, $y:0, $s:100% auto);
-            }
+    &.active{
+        h3{
+            opacity:1;
+            transform:translate(0, 0);
+        }
 
-            &:nth-child(3){
-                @include bg-img($url:"/images/img/img_soundQuality3.jpg", $x:0, $y:0, $s:100% auto);
-            }
-
-            &:nth-child(4){
-                @include bg-img($url:"/images/img/img_soundQuality4.jpg", $x:0, $y:0, $s:100% auto);
+        ul{
+            li{
+                opacity:1;
+                transform:translate(0, 0);
             }
         }
     }
@@ -317,6 +420,9 @@ footer{
     p{
         @include margin($d:bottom, $n:65px);
         @include font($s:50px, $lh:56px, $w:800, $a:center);
+        opacity:0;
+        transform:translate(0, 50px);
+        transition:transform 1s ease-out, opacity 800ms linear 500ms;
     }
 
     ul{
@@ -329,6 +435,8 @@ footer{
             height:270px;
             @include margin($d:top, $n:25px);
             @include margin($d:bottom, $n:25px);
+            opacity:0;
+            transform:translate(0, 50px);
 
             &:before{
                 @include position($t:0, $l:0);
@@ -338,30 +446,17 @@ footer{
                 height:271px;
             }
 
-            &:nth-child(1){
-                &:before{
-                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1387px, $y:-416px, $s:1683px auto);
+            $record_x: 1387, 1114, 1387, 1114;
+            $record_y: 416, 416, 143, 143;
+
+            @for $i from 1 through 4{
+                &:nth-child(#{$i}){
+                    &:before{
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-#{nth($record_x, $i)}px, $y:-#{nth($record_y, $i)}px, $s:1683px auto);   
+                    }
                 }
             }
-
-            &:nth-child(2){
-                &:before{
-                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-416px, $s:1683px auto);
-                }
-            }
-
-            &:nth-child(3){
-                &:before{
-                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1387px, $y:-143px, $s:1683px auto);
-                }
-            }
-
-            &:nth-child(4){
-                &:before{
-                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-143px, $s:1683px auto);
-                }
-            }
-
+            
             dl{
                 @include position($t:50%, $l:300px);
                 transform: translateY(-50%);
@@ -373,6 +468,26 @@ footer{
 
                 dd{
                     @include font($s:16px, $lh:24px, $c:$gray);
+                }
+            }
+        }
+    }
+
+    &.active{
+        p{
+            opacity:1;
+            transform:translate(0, 0);
+        }
+
+        ul{
+            li{ 
+                opacity:1;
+                transform:translate(0, 0);
+
+                @for $i from 1 through 4{
+                    &:nth-child(#{$i}){        
+                        transition:transform 800ms ease-in-out #{300+(200*$i)}ms, opacity 800ms linear #{600+(200*$i)}ms;
+                    }
                 }
             }
         }
@@ -396,6 +511,22 @@ footer{
         width:1100px;
         margin:50px auto;
 
+        $history_w: 422, 384, 422;
+        $history_h: 228, 355, 282;
+        $history_x: 424, 0, 0;
+        $history_y: 707, 0, 707;
+
+        @for $i from 1 through 3{
+            &:nth-child(#{$i+1}){
+                &:after{
+                    width:#{nth($history_w, $i)}px;
+                    height:#{nth($history_h, $i)}px;
+                    @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-#{nth($history_x, $i)}px, $y:-#{nth($history_y, $i)}px, $s:1683px auto);
+                    opacity:0;
+                }
+            }
+        }
+
         &:nth-child(even){
             @include padding($d:left, $n:550px);
 
@@ -418,34 +549,13 @@ footer{
             }
         }
 
-        &:nth-child(2){
-            &:after{
-                width:422px;
-                height:228px;
-                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-424px, $y:-707px, $s:1683px auto);
-            }
-        }
-
-        &:nth-child(3){
-            &:after{
-                width:384px;
-                height:355px;
-                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:0px, $y:0px, $s:1683px auto);
-            }
-        }
-
-        &:nth-child(4){
-            &:after{
-                width:420px;
-                height:282px;
-                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:0px, $y:-707px, $s:1683px auto);
-            }
-        }
-
+       
         dl{
             display:flex;
             margin:12px 0;
             letter-spacing:-1px;
+            opacity:0;
+            transform:translate(0, 50px);
 
             &:after{
                 display:block;
@@ -466,6 +576,24 @@ footer{
                         display:inline-block;
                         width:38px;
                         color:$black;
+                    }
+                }
+            }
+        }
+
+        &.active{
+            &:after{
+                animation: fadeInUp2 1s ease-out 1;
+                animation-fill-mode:both; 
+            }
+
+            dl{
+                opacity:1;
+                transform:translate(0, 0);
+
+                @for $i from 1 through 9{
+                    &:nth-child(#{$i+1}){ 
+                        transition:transform 400ms ease-in-out #{300+(200*$i)}ms, opacity 600ms linear #{500+(200*$i)}ms;
                     }
                 }
             }
@@ -491,7 +619,7 @@ footer{
             width:230px;
             height:50px;
             margin:0 auto 5px;
-            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-768px, $y:-629px, $s:1683px auto);
+            @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-768px, $y:-629px, $s:1683px auto);
         }
 
         &:after{
@@ -501,7 +629,7 @@ footer{
             width:512px;
             height:60px;
             margin:0 auto 32px;
-            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-832px, $s:1683px auto);
+            @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-832px, $s:1683px auto);
         }
     }
 
@@ -559,7 +687,7 @@ footer{
                 @include hideTxt;
                 @include position($l:50%, $t:50%);
                 transform: translate(-50%,-50%);
-                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-762px, $y:-355px, $s:1683px auto);
+                @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-762px, $y:-355px, $s:1683px auto);
             }
             
             img{
@@ -577,13 +705,13 @@ footer{
             &.slick-prev {
                 @include position($t:243px, $r:50%);
                 @include margin($d:right, $n:490px);
-                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1035px, $y:-547px, $s:1683px auto);
+                @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1035px, $y:-547px, $s:1683px auto);
             }
 
             &.slick-next {
                 @include position($t:243px, $l:50%);
                 @include margin($d:left, $n:490px);
-                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-617px, $y:-357px, $s:1683px auto);
+                @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-617px, $y:-357px, $s:1683px auto);
             }
         }
 
@@ -689,7 +817,7 @@ footer{
                     content:"";
                     width:12px;
                     height:14px;
-                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-237px, $s:1683px auto);
+                    @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-237px, $s:1683px auto);
                 }
             }
 
@@ -746,7 +874,7 @@ footer{
                         width:42px;
                         height:22px;
                         @include hideTxt;
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1628px, $y:-689px, $s:1683px auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1628px, $y:-689px, $s:1683px auto);
                     }
     
                     dd{
@@ -854,14 +982,14 @@ footer{
                     content:"";
                     width:9px;
                     height:5px;
-                    @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1674px, $y:-237px, $s:1683px auto);
+                    @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1674px, $y:-237px, $s:1683px auto);
                 }
             }
 
             &.on{
                 span{
                     &:after{
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1671px, $y:-252px, $s:1683px auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1671px, $y:-252px, $s:1683px auto);
                     }
                 }
             }
@@ -970,15 +1098,15 @@ footer{
             li{
                 &.topClass{
                     &:nth-child(1){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1140px, $y:-2086px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1140px, $y:-2086px, $s:auto);
                     }
             
                     &:nth-child(2){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-1042px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-1042px, $s:auto);
                     }
             
                     &:nth-child(3){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1536px, $y:-1094px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1536px, $y:-1094px, $s:auto);
                     }
                 }
             }
@@ -990,15 +1118,15 @@ footer{
             li{
                 &.topClass{
                     &:nth-child(1){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1140px, $y:-2086px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1140px, $y:-2086px, $s:auto);
                     }
             
                     &:nth-child(2){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-714px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-714px, $s:auto);
                     }
             
                     &:nth-child(3){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1536px, $y:-1094px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1536px, $y:-1094px, $s:auto);
                     }
                 }
             }
@@ -1030,15 +1158,15 @@ footer{
 
                 &.topClass{
                     &:nth-child(1){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-72px, $y:-2086px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-72px, $y:-2086px, $s:auto);
                     }
             
                     &:nth-child(2){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-1206px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-1206px, $s:auto);
                     }
             
                     &:nth-child(3){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-2209px, $y:-2086px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-2209px, $y:-2086px, $s:auto);
                     }
                 }
             }
@@ -1068,15 +1196,15 @@ footer{
 
                 &.topClass{
                     &:nth-child(1){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-878px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-700px, $y:-878px, $s:auto);
                     }
             
                     &:nth-child(2){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1674px, $y:-2086px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1674px, $y:-2086px, $s:auto);
                     }
             
                     &:nth-child(3){
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-607px, $y:-2086px, $s:auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-607px, $y:-2086px, $s:auto);
                     }
                 }
             }
@@ -1180,7 +1308,7 @@ footer{
                             content:"";
                             width:200px;
                             height:10px;
-                            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1436px, $y:-946px, $s:1683px auto)
+                            @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1436px, $y:-946px, $s:1683px auto)
                         }
 
                         &:before{
@@ -1189,7 +1317,8 @@ footer{
                             content:"";
                             width:65px;
                             height:69px;
-                            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-955px, $y:-456px, $s:1683px auto);
+                            @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-955px, $y:-456px, $s:1683px auto);
+                            opacity:0;
                         }
                     }
                 }
@@ -1205,7 +1334,7 @@ footer{
                             content:"";
                             width:300px;
                             height:10px;
-                            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-946px, $s:1683px auto)
+                            @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-946px, $s:1683px auto)
                         }
 
                         &:before{
@@ -1214,14 +1343,46 @@ footer{
                             content:"";
                             width:65px;
                             height:69px;
-                            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1022px, $y:-456px, $s:1683px auto)
+                            @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1022px, $y:-456px, $s:1683px auto);
+                            opacity:0;
                         }
                     }
                 }
 
             }
 
+            &.active{
+                li{
+                    &.worst{
+                        .bar{
+                            &:after{
+                                animation:fadeIn 500ms ease-out 2500ms;
+                                animation-fill-mode:both;
+                            }
 
+                            &:before{
+                                animation:fadeIn 500ms ease-out 3s;
+                                animation-fill-mode:both;
+                            }
+
+                        }
+                    }
+        
+                    &.best{
+                        .bar{
+                            &:after{
+                                animation:fadeIn 500ms ease-out 2500ms;
+                                animation-fill-mode:both;
+                            }
+
+                            &:before{
+                                animation:fadeIn 500ms ease-out 3s;
+                                animation-fill-mode:both;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         .bg{
@@ -1252,9 +1413,29 @@ footer{
 
         ul{ 
             @for $i from 1 through length($pop){
+                @keyframes popGraph#{$i}{
+                    from{
+                        width:0;
+                    }
+                
+                    to{
+                        width:calc(#{nth($pop, $i)}% - 108px);
+                    }
+                }
+
                 li:nth-child(#{$i}){
                     .bar{
                         @include percent($n:nth($pop, $i));
+                    }
+                }
+
+                &.active{
+                    li{
+                        &:nth-child(#{$i}){
+                            .bar{
+                                animation:popGraph#{$i} 2s ease-in-out #{100+(50*$i)}ms;
+                            }
+                        }
                     }
                 }
             }
@@ -1266,9 +1447,29 @@ footer{
 
         ul{ 
             @for $i from 1 through length($hiphop){
+                @keyframes hiphopGraph#{$i}{
+                    from{
+                        width:0;
+                    }
+                
+                    to{
+                        width:calc(#{nth($hiphop, $i)}% - 108px);
+                    }
+                }
+
                 li:nth-child(#{$i}){
                     .bar{
                         @include percent($n:nth($hiphop, $i));
+                    }
+                }
+
+                &.active{
+                    li{
+                        &:nth-child(#{$i}){
+                            .bar{
+                                animation:hiphopGraph#{$i} 2s ease-in-out #{100+(50*$i)}ms;
+                            }
+                        }
                     }
                 }
             }
@@ -1280,9 +1481,29 @@ footer{
 
         ul{ 
             @for $i from 1 through length($rnb){
+                @keyframes rnbGraph#{$i}{
+                    from{
+                        width:0;
+                    }
+                
+                    to{
+                        width:calc(#{nth($rnb, $i)}% - 108px);
+                    }
+                }
+
                 li:nth-child(#{$i}){
                     .bar{
                         @include percent($n:nth($rnb, $i));
+                    }
+                }
+
+                &.active{
+                    li{
+                        &:nth-child(#{$i}){
+                            .bar{
+                                animation:rnbGraph#{$i} 2s ease-in-out #{100+(50*$i)}ms;
+                            }
+                        }
                     }
                 }
             }
@@ -1294,9 +1515,29 @@ footer{
 
         ul{ 
             @for $i from 1 through length($ost){
+                @keyframes ostGraph#{$i}{
+                    from{
+                        width:0;
+                    }
+                
+                    to{
+                        width:calc(#{nth($ost, $i)}% - 108px);
+                    }
+                }
+
                 li:nth-child(#{$i}){
                     .bar{
                         @include percent($n:nth($ost, $i));
+                    }
+                }
+
+                &.active{
+                    li{
+                        &:nth-child(#{$i}){
+                            .bar{
+                                animation:ostGraph#{$i} 2s ease-in-out #{100+(50*$i)}ms;
+                            }
+                        }
                     }
                 }
             }
@@ -1335,7 +1576,7 @@ footer{
             content:"";
             width:34px;
             height:631px;
-            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:0px, $y:-1043px, $s:1683px auto);
+            @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:0px, $y:-1043px, $s:1683px auto);
         }
 
         li{
@@ -1377,7 +1618,7 @@ footer{
                 &.topClass:nth-child(#{$i}){
                     .percent{
                         width:#{nth($top_w, $i)}px;
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-#{nth($top_x, $i)}px, $y:-#{nth($top_y, $i)}px, $s:1683px auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-#{nth($top_x, $i)}px, $y:-#{nth($top_y, $i)}px, $s:1683px auto);
                     }
                 }
             }
@@ -1392,7 +1633,7 @@ footer{
                 &:nth-child(#{$i + 3}){
                     .percent{
                         width:#{nth($etc_w, $i)}px;
-                        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-#{nth($etc_x, $i)}px, $y:-#{nth($etc_y, $i)}px, $s:1683px auto);
+                        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-#{nth($etc_x, $i)}px, $y:-#{nth($etc_y, $i)}px, $s:1683px auto);
                         text-indent:#{nth($etc_w, $i) + 15}px;
                     }
                 }
@@ -1406,13 +1647,13 @@ footer{
 #eventWrap{
     @include padding($d:top, $n:130px);
     @include padding($d:bottom, $n:120px);
-    @include bg-img($url:"/images/bg/bg_event.jpg", $x:50%, $y:0, $c:#151515);
+    @include bg-img($url:"../../images/bg/bg_event.jpg", $x:50%, $y:0, $c:#151515);
 
     h3{
         width:416px;
         height:141px;
         margin:0 auto 20px;
-        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-689px, $s:1683px auto);
+        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:-689px, $s:1683px auto);
         @include hideTxt;
     }
 
@@ -1456,7 +1697,7 @@ footer{
             content:"";
             width:22px;
             height:22px;
-            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-143px, $s:1683px auto);
+            @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-143px, $s:1683px auto);
         }
     }
 
@@ -1473,7 +1714,7 @@ footer{
             width: 348px;
             height: 348px;
             transform:translateX(-50%);
-            @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:0, $y:-357px, $s:1683px auto);
+            @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:0, $y:-357px, $s:1683px auto);
         }
 
         .blur{
@@ -1483,26 +1724,32 @@ footer{
             @include bg-color($c:#151515);
             transform:translateX(-50%);
             overflow:hidden;
-
+            
             div{
+                @include position($l:52%);
+                width:5256px;
                 height:348px;
-                @include bg-img($url:"/images/txt/txt_event_onepickBlur.png", $x:0, $y:50%, $r:repeat-x, $s:auto 108px);
+                @include margin($d:left, $n:-50vw);
+                @include bg-img($url:"../../images/txt/txt_event_onepickBlur.png", $x:0%, $y:50%, $r:repeat-x, $s:auto 108px);
                 filter: blur(20px);
+                animation:rightLeft 30s linear infinite;
             }
         }
 
         .bg{
+            width:5256px;
             height:348px;
-            @include bg-img($url:"/images/txt/txt_event_onepick.png", $x:0, $y:50%, $r:repeat-x, $s:auto 108px);
+            @include bg-img($url:"../../images/txt/txt_event_onepick.png", $x:0, $y:50%, $r:repeat-x, $s:auto 108px);
             @include hideTxt;
-        }
+            animation:rightLeft 30s linear infinite;
+        }   
     }
 
     .notice{
         width:1100px;
         margin:0 auto;
         @include padding($d:top, $n:360px);
-        @include bg-img($url:"/images/bg/img_event_guide.png", $x:50%, $y:0, $s:1100px auto);
+        @include bg-img($url:"../../images/bg/img_event_guide.png", $x:50%, $y:0, $s:1100px auto);
 
         h4{
             width:950px;
@@ -1555,7 +1802,7 @@ footer{
         width:567px;
         height:141px;
         margin:0 auto 20px;
-        @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:0, $s:1683px auto);
+        @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1114px, $y:0, $s:1683px auto);
         @include hideTxt;
     }
 
@@ -1568,7 +1815,7 @@ footer{
         height:788px;
         margin:0 auto;
         text-align:center;
-        @include bg-img($url:"/images/bg/img_vipEventGift.jpg", $x:50%, $y:0, $s:1100px auto);
+        @include bg-img($url:"../../images/bg/img_vipEventGift.jpg", $x:50%, $y:0, $s:1100px auto);
 
         em{
             display:inline-block;
@@ -1597,7 +1844,7 @@ footer{
                 width:9px;
                 height:16px;
                 @include margin($d:left, $n:7px);
-                @include bg-img($url:"/images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-252px, $s:1683px auto);
+                @include bg-img($url:"../../images/sprite_promotion_20thAnniversary_pc.png", $x:-1660px, $y:-252px, $s:1683px auto);
             }
         }
     }

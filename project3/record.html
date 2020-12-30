@@ -6,7 +6,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="format-detection" content="telephone=no" />
    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-   <script type="text/javascript" src="lib/js/jquery.counterup.min.js"></script>
+   <script type="text/javascript" src="lib/js/jquery.counterup.js"></script>
    <script type="text/javascript" src="lib/js/jquery.waypoints.min.js"></script>
    <script type="text/javascript" src="lib/js/motion.js"></script>
    <link rel="stylesheet" type="text/css" href="lib/css/font.css" />
@@ -39,7 +39,39 @@
 <section id="timelineWrap">
    <h3 class="screen_out">타임라인</h3>
    <p class="subTit">우리가 만나 함께한 시간 기억하시죠?</p>
-   <p class="time"><em>20</em>년 <em>7,300</em>일 <em>10,512,000</em>분</p>
+   <p class="time">
+      <span class="year"><em>20</em>년</span>
+      <span class="day"><em>7,300</em>일</span>
+      <span class="minute"><em>10,512,000</em>분</span>
+   </p>
+   <script>
+   $(function(){
+      $('.time').find(".year").find("em").counterUp({
+         delay: 15,
+         time: 1000
+      });
+
+      $('.time').find(".day").find("em").counterUp({
+         delay: 20,
+         time: 1500
+      });
+
+      $('.time').find(".minute").find("em").counterUp({
+         delay: 25,
+         time: 2000
+      });
+
+      $("#firstRecordWrap").find(".album").find("em").counterUp({
+         delay: 15,
+         time: 1500
+      });
+
+      $("#firstRecordWrap").find(".soundSource").find("em").counterUp({
+         delay: 20,
+         time: 1500
+      });
+   });
+   </script>
    <ul class="timeline clear">
       <li><span>2000</span>벅스 뮤직의 시작!<br />(2월 도메인 등록)</li>
       <li><span>2001</span>얼굴없는 가수의 부흥!<br />브라운 아이즈, 왁스</li>
@@ -70,13 +102,13 @@
 <section id="firstRecordWrap">
    <div>
       <h3 class="screen_out">벅스의 첫번째 기록</h3>
-      <p>
+      <p class="album">
          한곡 한곡 정성스레 담은<br />내 앨범이 벌써
-         <span><em>38,000,000+</em>개</span>
+         <span><em>38,000,000</em>개</span>
       </p>
-      <p>
+      <p class="soundSource">
          여러분을 위해 준비한<br />보유음원, 매일 들어도
-         <span><em>304+</em>년</span>
+         <span><em>304</em>년</span>
       </p>
    </div>
 </section>
